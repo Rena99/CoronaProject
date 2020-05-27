@@ -1,0 +1,99 @@
+table, td,th {
+    background-color:rgb(137, 170, 231);
+    margin-left: 150px; 
+    bottom: 500px;
+    top:500px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+
+}
+header{
+    background-color: rgb(235, 235, 235);
+    height: 50px;
+    text-align: center;
+    top: 80px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 25px;
+    font-style: oblique;
+}
+div{
+    background: lightseagreen;
+}
+button{
+    box-shadow: 0px 10px 14px -7px #276873;
+   background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+   background-color:#599bb3;
+   border-radius:16px;
+   border:1px solid #45a5e6;
+   display:inline-block;
+   cursor:pointer;
+   color:#ffffff;
+   font-family:Arial;
+   font-size:16px;
+   font-weight:bold;
+   padding:13px 32px;
+   text-decoration:none;
+   text-shadow:0px -2px 0px #3d768a;
+   position: relative;
+    top: 200px;
+   left: 1100px; 
+}
+.refresh{
+    box-shadow: 0px 10px 14px -7px #276873;
+   background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+   background-color:#599bb3;
+   border-radius:16px;
+   border:1px solid #45a5e6;
+   display:inline-block;
+   cursor:pointer;
+   color:#ffffff;
+   font-family:Arial;
+   font-size:16px;
+   font-weight:bold;
+   padding:13px 32px;
+   text-decoration:none;
+   text-shadow:0px -2px 0px #3d768a;
+   position: relative;
+    top: 400px;
+   left: 1100px; 
+}
+
+a{ box-shadow: 0px 10px 14px -7px #276873;
+    background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+    background-color:#599bb3;
+    border-radius:16px;
+    border:1px solid #45a5e6;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:16px;
+    font-weight:bold;
+    padding:13px 32px;
+    text-decoration:none;
+    text-shadow:0px -2px 0px black;
+    position: relative;
+    top: 300px;
+    left: 700px;
+}
+input{
+    box-shadow: 0px 10px 14px -7px #276873;
+    background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+    background-color:#599bb3;
+    border-radius:16px;
+    border:1px solid #45a5e6;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:16px;
+    font-weight:bold;
+    padding:13px 32px;
+    text-decoration:none;
+    text-shadow:0px -2px 0px black;
+    position: relative;
+    top: 300px;
+   left: 700px;
+}
+body{
+    background-color: magenta;
+}
