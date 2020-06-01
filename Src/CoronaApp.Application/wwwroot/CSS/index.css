@@ -227,10 +227,9 @@ tr:nth-child(odd) {
     background-color: rgba(2, 2, 68, 0.521);
     border-width: 2px;
     border-color: snow;
-    margin-left: 40%;
-    margin-right: 40%;
-    position: relative;
-    top: 100px;
+    margin-left: 2%;
+    position: fixed;
+    top: 10px;
 }
 
 

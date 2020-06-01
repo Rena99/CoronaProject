@@ -2,11 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CoronaApp.Dal;
 using CoronaApp.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -27,6 +29,8 @@ namespace CoronaApp.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddDbContext<CoronaContext>(options => 
+            options.UseSqlServer(Configuration.GetConnectionString("CoronaContext")));
             services.AddScoped<ILocationRepository, LocationRepository>();
             services.AddScoped<IPatientRepository, PatientRepository>();
         }
@@ -37,6 +41,11 @@ namespace CoronaApp.Api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler();
+                app.UseHsts();
             }
 
             app.UseHttpsRedirection();

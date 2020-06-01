@@ -7,7 +7,7 @@ let locationsList = [];
 
 let searchLocationsList = [];
 
-let listNamesForColumns = ["city", "location", "startDate", "endDate"];
+let listNamesForColumns = ["Id", "city", "location", "startDate", "endDate"];
 
 var obj, dbParam, xmlhttp, myObj, x, txt = "", currentList;
 obj = { table: "demo", limit: 20 };
@@ -29,32 +29,9 @@ function load() {
 
 }
 
-function syntaxHighlight(json) {
-    if (typeof json != 'string') {
-        json = JSON.stringify(json, undefined, 2);
-    }
-    json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-    return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
-        var cls = 'number';
-        if (/^"/.test(match)) {
-            if (/:$/.test(match)) {
-                cls = 'key';
-            } else {
-                cls = 'string';
-            }
-        } else if (/true|false/.test(match)) {
-            cls = 'boolean';
-        } else if (/null/.test(match)) {
-            cls = 'null';
-        }
-
-        return match;
-    });
-}
-
 function styleTable(table) {
     table.style.textAlign = "center";
-    table.setAttribute("id", "personTable");
+    table.setAttribute("id", "table");
     table.style.width = '50%';
     table.setAttribute('border', '1');
     table.style.borderColor = "red";
@@ -65,11 +42,12 @@ function styleTable(table) {
 function createTable(locationsList) {
     if (locationsList.length > 0) {
         var b = document.getElementsByTagName("body")[0];
-        var table = document.createElement("table");
-        styleTable(table);
+        //   var table = document.createElement("table");
+        var table = document.getElementById("table");
+        // styleTable(table);
         var col = [];
         //var numberOfProperties = Object.keys(locationsList[0].).length;
-        var numberOfProperties = 4;
+        var numberOfProperties = 5;
         var tHead = document.createElement("thead");
         var hRow = document.createElement("tr");
         for (let j = 0; j < numberOfProperties; j++) {
@@ -78,70 +56,104 @@ function createTable(locationsList) {
             hRow.appendChild(th);
         }
         tHead.appendChild(hRow);
-        table.appendChild(tHead);
+        //table.appendChild(tHead);
         var index = 0;
         var tBody = document.createElement("tbody");
+        tBody.setAttribute("id", "tBodyId")
         for (var c = 0; c < myObj.length; c++) {
-          
+
             currentRowValues = myObj[c];
-            //currentRowValues = myObj[c].path;
             var k = Object.keys(currentRowValues).length;
-         // for (var i = 0; i < k; i++) {
-                //for (var item in currentRowValues.numberOfProperties) {
-                var arryEX = Object.values(currentRowValues);
-                let bRow = document.createElement("tr");
-                for (var item2 of arryEX)
-                {
-                    index++;
-                    var td = document.createElement("td");
-                    td.style.width = "50px";
-                    if (index===3|| index==4) {
-                        item2 = item2.substring(0, 10);
-                      //  item2[4] = "/";
-                    }
-                    td.innerHTML = item2;
-                    bRow.appendChild(td);
+            var arryEX = Object.values(currentRowValues);
+            let bRow = document.createElement("tr");
+            for (var item2 of arryEX) {
+                index++;
+                var td = document.createElement("td");
+                td.style.width = "50px";
+                if (index === 5 || index == 4) {
+                    item2 = item2.substring(0, 10);
                 }
-                index = 0;
-                tBody.appendChild(bRow);
+                td.innerHTML = item2;
+                bRow.appendChild(td);
             }
-        //}
+            index = 0;
+            tBody.appendChild(bRow);
+        }
     }
     table.appendChild(tBody);
     b.appendChild(table);
 }
-
-
-//Call to build the table
-//createTable(locationsList);
-
-const buttonSearch = document.getElementById('Search-City');
-
-const inputSearch = document.getElementById('nameOfCity');
-
-const BASICURL = "https://localhost:44381/api/";
-
-const refresh = document.getElementById('refresh');
 var searchLocation = {
-    City: String
+    City: String,
+    StartDate: Date,
+    EndDate: Date
+
 }
+const buttonSearch = document.getElementById('Search-City');
+const sortDate = document.getElementById("sortDate");
+const inputSearch = document.getElementById('nameOfCity');
+//const StartDate= document.getElementById("StartDate");
+//const EndDate = document.getElementById("EndDate");
+const buttonSearchDate = document.getElementById("SearchDate");
+const BASICURL = "https://localhost:44381/api/";
+const refresh = document.getElementById('refresh');
+
+buttonSearchDate.addEventListener("click", function () {
+    //document.getElementById("table").remove();
+    let lenghtTable = document.getElementById("table").rows.length;
+    for (var i = 0, x = 2; i < lenghtTable - 2; i++) {
+        document.getElementById("table").deleteRow(x);
+    }
+    let inputStartDate = document.getElementById("StartDate").value;
+    let inputEndDate = document.getElementById("EndDate").value;
+    searchLocation.StartDate = inputStartDate;
+    searchLocation.EndDate = inputEndDate;
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            xhttp.response;
+            searchLocationsList = xhttp.response;
+            searchLocationsList = JSON.parse(this.responseText);
+            myObj = searchLocationsList;
+            createTable(searchLocationsList);
+        }
+    }
+    let values;
+    if (inputStartDate != "" && inputEndDate != "") {
+        inputStartDate = inputStartDate.substring(0, 10);
+        inputEndDate = inputEndDate.substring(0, 10);
+        values = "?locationSearch.StartDate=" + inputStartDate + "&locationSearch.EndDate=" + inputEndDate;
+    }
+    xhttp.open("GET", "api/Location/Get" + values, true);
+    xhttp.send();
+});
+
+
+
+
+
 refresh.addEventListener('click', function () {
-    document.getElementById("personTable").remove();
-    createTable(locationsList);
+    let lenghtTable = document.getElementById("table").rows.length;
+    for (var i = 0, x = 2; i < lenghtTable - 2; i++) {
+        document.getElementById("table").deleteRow(x);
+    }
+    myObj = JSON.parse(locationsList);
+    createTable(myObj);
 }
 );
 //When a user types a city for searching, the list is only shown to that city
 inputSearch.addEventListener('mouseleave', function () {
     buttonSearch.addEventListener('click', function () {
-        //Variable that hendle which city user want to check 
         let valueOfInput = document.getElementById('nameOfCity').value;
-        //inputSearch.value = "";
         searchLocation.City = valueOfInput
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                xhttp.response;
-                searchLocationsList = xhttp.response;
+                let lenghtTable = document.getElementById("table").rows.length;
+                for (var i = 0, x = 2; i < lenghtTable - 2; i++) {
+                    document.getElementById("table").deleteRow(x);
+                }
+                searchLocationsList = "";
                 searchLocationsList = JSON.parse(this.responseText);
                 myObj = searchLocationsList;
                 createTable(searchLocationsList);
@@ -149,66 +161,56 @@ inputSearch.addEventListener('mouseleave', function () {
         }
 
         if (valueOfInput != "") {
-            valueOfInput = "?locationSearch.City=" + valueOfInput;}
-        xhttp.open("GET", "api/Location/" + valueOfInput, true);
+            valueOfInput = "?locationSearch.City=" + valueOfInput;
+        }
+        xhttp.open("GET", "api/Location/Get" + valueOfInput, true);
         xhttp.send();
-
-        //let item;
-        //let flag = 0;
-        //if (valueOfInput != "") {
-        //    var i = 0;
-        //    const city = document.getElementById('personTable');
-        //    for (var r = 1, index = 1, n = city.rows.length; index < n; r++, index++) {
-        //        item = city.rows[r].cells[0].innerHTML;
-
-        //        if (item === valueOfInput) {
-        //            flag = 1;
-        //        }
-        //        else {
-        //            document.getElementById("personTable").deleteRow(r);
-        //            r--;
-        //        }
-        //    }
-        //    if (flag === 0) {
-        //        document.getElementById("personTable").remove();
-        //        createTable(locationsList);
-        //    }
-        //}
     });
 });
 
-//convert Date
-function convertDate(d) {
-    var p = d.split("-");
-    reverseString(p);
-    return +(p[2] + p[1] + p[0]);
-}
 
-//Sort a table By Date
-function sortByDate() {
-    var tbody = document.querySelector("#personTable tbody");
-    // get trs as array for ease of use
+sortDate.addEventListener("click", function () {
+    var tbody = document.getElementById("tBodyId");
     var rows = [].slice.call(tbody.querySelectorAll("tr"));
-    rows.sort(function (a, b) {
-        return convertDate(a.cells[2].innerHTML) - convertDate(b.cells[2].innerHTML);
-    });
+    rows.sort((a, b) => a.cells[3].innerHTML.localeCompare(b.cells.innerHTML));
     rows.forEach(function (v) {
         tbody.appendChild(v); // note that .appendChild() *moves* elements
     });
 
-}
-document.querySelector("button").addEventListener("click", sortByDate);
-document.getElementById("sortById").addEventListener("click", sortByDate);
+})
 
-function reverseString(str) {
-    var arry=[];
-    for (var i = 0, j = str.length; i <str.length; j--,i++) {
-        arry[j] = str[i];
-    }
-    console.log(arry);
+//convert Date
+//function convertDate(d) {
+//    var p = d.split("-");
+//    reverseString(p);
+//    return +(p[2] + p[1] + p[0]);
+//}
 
-    return arry;
-}
+//Sort a table By Date
+//function sortByDate() {
+    //var tbody = document.querySelector("#table tbody");
+    //// get trs as array for ease of use
+    //var rows = [].slice.call(tbody.querySelectorAll("tr"));
+    //rows.sort(function (a, b) {
+    //    return convertDate(a.cells[2].innerHTML) - convertDate(b.cells[2].innerHTML);
+    //});
+    //rows.forEach(function (v) {
+    //    tbody.appendChild(v); // note that .appendChild() *moves* elements
+    //});
+
+//}
+//document.querySelector("button").addEventListener("click", sortByDate);
+//document.getElementById("sortById").addEventListener("click", sortByDate);
+
+//function reverseString(str) {
+//    var arry = [];
+//    for (var i = 0, j = str.length; i < str.length; j--, i++) {
+//        arry[j] = str[i];
+//    }
+//    console.log(arry);
+
+//    return arry;
+//}
 
 
 

@@ -1,5 +1,4 @@
-﻿using CoronaApp.Dal;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 

@@ -1,24 +1,87 @@
-table, td,th {
-    background-color:rgb(137, 170, 231);
+/*table, td, th {*/
+    /*    background-color:rgb(137, 170, 231);
     margin-left: 150px; 
     bottom: 500px;
     top:500px;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
-
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif*/
+    /*font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0 auto;
+    position: relative;
+    top: 110px;
+    text-align: center;
+    width: 900px;
+    background-color: rgb(1, 1, 48);
+    padding-bottom: 30px;
+    display: none;
+    width: 64%;
+    margin-left: 22%;
+    margin-right: 22%;
+}*/
+/*body {
+    background-color: rgb(1, 1, 48);
 }
-header{
-    background-color: rgb(235, 235, 235);
+#table {
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0 auto;
+    position: relative;
+    top: 110px;
+    text-align: center;
+    width: 900px;
+    background-color: rgb(1, 1, 48);
+    padding-bottom: 30px;
+    display: none;
+    width: 64%;
+    margin-left: 22%;
+    margin-right: 22%;
+}
+
+#headerRow {
+    font-size: 20px;
+    background-color: rgb(1, 1, 48);
+}
+
+#startDateHeader {
+    color: rgb(221, 22, 195);
+    width: 200px;
+}
+
+#endDateHeader {
+    color: rgb(0, 174, 255);
+    width: 200px;
+}
+
+#cityHeader {
+    color: yellow;
+    width: 200px;
+}
+
+#locationHeader {
+    color: rgb(85, 202, 31);
+    width: 200px;
+}*/
+/*header {*/
+    /*    background-color: rgb(235, 235, 235);
     height: 50px;
     text-align: center;
     top: 80px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 25px;
-    font-style: oblique;
-}
-div{
+    font-style: oblique;*/
+    /*font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 65px;
+    color: snow;
+    margin: 0 auto;
+    width: 650px;
+    text-align: center;
+    position: relative;
+    top: 50px;
+}*/
+/*div{
     background: lightseagreen;
-}
-button{
+}*/
+/*button{
     box-shadow: 0px 10px 14px -7px #276873;
    background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
    background-color:#599bb3;
@@ -55,45 +118,320 @@ button{
    position: relative;
     top: 400px;
    left: 1100px; 
+}*/
+
+/*a {*/ /*box-shadow: 0px 10px 14px -7px #276873;
+    background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+    background-color:#599bb3;
+    border-radius:16px;
+    border:1px solid #45a5e6;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:16px;
+    font-weight:bold;
+    padding:13px 32px;
+    text-decoration:none;
+    text-shadow:0px -2px 0px black;
+    position: relative;
+    top: 300px;
+    left: 700px;*/
+ /*   height: 30px;
+    width: 20%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    color: snow;
+    background-color: rgba(2, 2, 68, 0.521);
+    border-width: 2px;
+    border-color: snow;
+    margin-left: 40%;
+    margin-right: 40%;
+    position: relative;
+    top: 100px;
+    display: none;
+}*/
+/*input {*/
+    /*  box-shadow: 0px 10px 14px -7px #276873;
+    background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+    background-color:#599bb3;
+    border-radius:16px;
+    border:1px solid #45a5e6;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:16px;
+    font-weight:bold;
+    padding:13px 32px;
+    text-decoration:none;
+    text-shadow:0px -2px 0px black;
+    position: relative;
+    top: 300px;
+   left: 700px;*/
+    /*    border-width: 2px;
+    height: 25px;
+    width: 200px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+    color: snow;
+    background-color: rgb(1, 1, 48);
+    border-color: snow;
+    position: inherit;*/
+height: 30px;
+/*    width: 20%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    color: snow;
+    background-color: rgba(2, 2, 68, 0.521);
+    border-width: 2px;
+    border-color: snow;
+    margin-left: 40%;
+    margin-right: 40%;
+    position: relative;
+    top: 100px;
+    display: none;
+}*/
+#personTable {
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0 auto;
+    position: relative;
+    top: 80px;
+    color: snow;
+   
+    width: 64%;
+    margin-left: 22%;
+    margin-right: 22%;
 }
 
-a{ box-shadow: 0px 10px 14px -7px #276873;
-    background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
-    background-color:#599bb3;
-    border-radius:16px;
-    border:1px solid #45a5e6;
-    display:inline-block;
-    cursor:pointer;
-    color:#ffffff;
-    font-family:Arial;
-    font-size:16px;
-    font-weight:bold;
-    padding:13px 32px;
-    text-decoration:none;
-    text-shadow:0px -2px 0px black;
+.row {
+    margin: 0 auto;
+    color:snow;
+}
+tr:nth-child(even) {
+    background-color: rgb(51, 51, 80);
+}
+
+tr:nth-child(odd) {
+    background-color: rgb(35, 35, 82);
+}
+
+.cell {
+    width: 205px;
+    border-width: 2px;
+    border-color: snow;
+}
+b{
+    color:azure;
+    font-size:medium;
+}
+h1 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 65px;
+    color: snow;
+    margin: 0 auto;
+    width: 650px;
+    text-align: center;
     position: relative;
-    top: 300px;
-    left: 700px;
+    top: 50px;
 }
-input{
-    box-shadow: 0px 10px 14px -7px #276873;
-    background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
-    background-color:#599bb3;
-    border-radius:16px;
-    border:1px solid #45a5e6;
-    display:inline-block;
-    cursor:pointer;
-    color:#ffffff;
-    font-family:Arial;
-    font-size:16px;
-    font-weight:bold;
-    padding:13px 32px;
-    text-decoration:none;
-    text-shadow:0px -2px 0px black;
+
+body {
+    background-color: rgb(1, 1, 48);
+}
+
+#inputID {
+    margin: 0 auto;
+    width: 250px;
     position: relative;
-    top: 300px;
-   left: 700px;
+    top: 100px;
 }
-body{
-    background-color: magenta;
+
+#patientID {
+    width: 200px;
+    height: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    color: snow;
+    background-color: rgba(2, 2, 68, 0.521);
+    border-width: 2px;
+    border-color: snow;
+    position: inherit;
 }
+
+#addUser {
+    width: 40px;
+    height: 36px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    color: snow;
+    background-color: rgba(2, 2, 68, 0.521);
+    border-width: 2px;
+    border-color: snow;
+    position: inherit;
+}
+
+#inputedPatientsID {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 28px;
+    color: snow;
+    position: relative;
+    top: 80px;
+    margin: 0 auto;
+    text-align: center;
+    display: none;
+}
+
+#table {
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0 auto;
+    position: relative;
+    top: 110px;
+    text-align: center;
+    width: 900px;
+    background-color: rgb(1, 1, 48);
+    padding-bottom: 30px;
+    width: 64%;
+    margin-left: 22%;
+ color:snow;
+    margin-right: 22%;
+}
+
+#headerRow {
+    font-size: 20px;
+    background-color: rgb(1, 1, 48);
+}
+
+#startDateHeader {
+    color: rgb(221, 22, 195);
+    width: 200px;
+}
+
+#endDateHeader {
+    color: rgb(0, 174, 255);
+    width: 200px;
+}
+
+#cityHeader {
+    color: yellow;
+    width: 200px;
+}
+
+#locationHeader {
+    color: rgb(85, 202, 31);
+    width: 200px;
+}
+
+.input {
+    border-width: 2px;
+    height: 25px;
+    width: 200px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+    color: snow;
+    background-color: rgb(1, 1, 48);
+    border-color: snow;
+    position: inherit;
+}
+
+#startDate {
+    border-color: rgb(221, 22, 195);
+    width: 200px;
+}
+
+#endDate {
+    border-color: rgb(0, 174, 255);
+    width: 200px;
+}
+
+#city {
+    height: 23px;
+    border-color: yellow;
+    width: 200px;
+}
+
+#location {
+    height: 23px;
+    border-color: rgb(85, 202, 31);
+    width: 200px;
+}
+
+#Search-City, #SearchDate, #sortDate, #refresh {
+    height: 29px;
+    width: 100px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    color: snow;
+    background-color: rgb(1, 1, 48);
+    border-width: 2px;
+    border-color: snow;
+    position: inherit;
+}
+
+
+#button {
+    background-color: rgb(1, 1, 48);
+    width: 100px;
+}
+
+#dataTable {
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0 auto;
+    position: relative;
+    top: 80px;
+    color: snow;
+    display: none;
+    width: 64%;
+    margin-left: 22%;
+    margin-right: 22%;
+}
+
+.row {
+    margin: 0 auto;
+}
+
+.deleted {
+    font-family: Arial, Helvetica, sans-serif;
+    height: 29px;
+    width: 100px;
+    font-size: 15px;
+    color: snow;
+    background-color: rgba(2, 2, 68, 0.363);
+    border-width: 2px;
+    border-color: snow;
+    position: inherit;
+}
+
+tr:nth-child(even) {
+    background-color: rgb(51, 51, 80);
+}
+
+tr:nth-child(odd) {
+    background-color: rgb(35, 35, 82);
+}
+
+.cell {
+    width: 205px;
+    border-width: 2px;
+    border-color: snow;
+}
+
+#switchPatient {
+    height: 30px;
+    width: 20%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    color: snow;
+    background-color: rgba(2, 2, 68, 0.521);
+    border-width: 2px;
+    border-color: snow;
+    margin-left: 40%;
+    margin-right: 40%;
+    position: relative;
+    top: 100px;
+    display: none;
+}
+

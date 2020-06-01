@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using CoronaApp.Dal;
 using CoronaApp.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,7 +14,7 @@ namespace CoronaApp.Api.Controllers
     [ApiController]
     public class PatientController : ControllerBase
     {
-        public IPatientRepository PatientRepository;
+        private readonly IPatientRepository PatientRepository;
         public PatientController(IPatientRepository patientRepository)
         {
             PatientRepository = patientRepository;

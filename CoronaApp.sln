@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoronaApp.Api", "Src\Corona
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{0AF6CC86-9CE6-4543-897D-03C77399A44A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoronaApp.Tests", "Tests\CoronaApp.Tests\CoronaApp.Tests.csproj", "{10A522D9-CB2F-48FC-B1FC-A0E88D12D3A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoronaApp.Tests", "Tests\CoronaApp.Tests\CoronaApp.Tests.csproj", "{10A522D9-CB2F-48FC-B1FC-A0E88D12D3A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoronaApp.Dal", "Src\CoronaApp.Dal\CoronaApp.Dal.csproj", "{320EAF13-9A7F-46E1-968C-9B84DB6E5FC2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoronaApp.Dal", "Src\CoronaApp.Dal\CoronaApp.Dal.csproj", "{320EAF13-9A7F-46E1-968C-9B84DB6E5FC2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

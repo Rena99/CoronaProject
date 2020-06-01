@@ -6,19 +6,49 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
 </head>
-<body style="background-color:rgb(3, 59, 124);">
+<body>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!--style="background-color:rgb(3, 59, 124);"-->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
+    <table id="table">
+        <tr id="headerRow">
+            <th id="idPersonHeader">Id</th>
+            <th id="cityHeader">City</th>
+            <th id="locationHeader">Location</th>
+            <th id="startDateHeader">Start Date</th>
+            <th id="endDateHeader">End Date</th>
 
-    <button id="sortById" class="myButton">Sort by date</button>
-    <button class="myButton" id="refresh">Refresh</button>
-    <a id="Search-City" class="myButton">Search City</a>
-    <input type="text" id="nameOfCity" placeholder="Enter city that you want">
+            <th></th>
+        </tr>
+        <tr id="rowOfPathData">
+            <th><input id="idPerson" class="input" type="text"></th>
+            <th><input id="nameOfCity" placeholder="Enter city that you want" class="input" type="text"></th>
+            <th><input id="city" class="input" type="text"></th>
+            <th><input id="StartDate" class="input" type="datetime-local"></th>
+            <th><input id="EndDate" class="input" type="datetime-local"></th>
+            <th class="button"> <input id="Search-City" type="button" value="Search-City"></th>
+            <th class="button"> <input id="SearchDate" type="button" value="SearchDate"></th>
+           
+        </tr>
+    </table>
+    <table id="personTable">
+    </table>
+    <!--<input id="switchPatient" type="button" value="Switch Patient">-->
+    <!-- <button id="sortById" class="myButton">Sort by date</button>-->
+    <input type="button" id="sortDate" value="sortDate" />
+           <button id="refresh">Refresh</button>
+    <!--<button id="sortDate">sortDate</button>-->
+    <button id="Search-City">Search City</button>-
+    <!-- <input type="text" id="nameOfCity" placeholder="Enter city that you want"-->>
+    <!--<button id="SearchDate" class="myButton">SearchDate</button>-->
+    <!--<input type="date" id="StartDate" placeholder="Enter Start Date" />
+    <input type="date" id="EndDate" placeholder="Enter End Date" />-->
+    <!--<button id="SearchAge">SearchAge</button>
+    <input type="number" id="NumberOfAge" placeholder="Enter age" />-->
 
-    <a href="indexRina.html"class="myButton">Add new Patient</a>
+    <br /><br />
+    <a href="indexRina.html">Add new Patient</a>
     <script type="text/javascript" src="js/index.js" charset="utf-8"></script>
-
-
 </body>
 
 </html>

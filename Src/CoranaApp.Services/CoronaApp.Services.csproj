@@ -19,8 +19,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\CoronaApp.Dal\CoronaApp.Dal.csproj" />
-  </ItemGroup>
-
 </Project>
