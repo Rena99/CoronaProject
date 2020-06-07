@@ -55,6 +55,7 @@ body{
     border-width: 2px;
     border-color: snow;
     position: inherit;
+    display:none;
 }
 
 #addUser{
@@ -67,6 +68,19 @@ body{
     border-width: 2px;
     border-color: snow;
     position: inherit;
+    display:none;
+}
+#getToken {
+    width: 40px;
+    height: 36px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    color: snow;
+    background-color: rgba(2, 2, 68, 0.521);
+    border-width: 2px;
+    border-color: snow;
+    position: inherit;
+    display: none;
 }
 
 #inputedPatientsID{

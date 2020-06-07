@@ -12,8 +12,6 @@ namespace CoronaApp.Services
         [Key]
         public int Id { get; set; }
         public int Age { get; set; }
-
-        public int PasswordPatient { get; set; }
         public string Token { get; set; }
         public List<Location> Path { get; set; }
 

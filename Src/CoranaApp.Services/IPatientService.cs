@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 
 namespace CoronaApp.Services
 {
     public interface IPatientService
     {
-        Patient Authenticate(int id, int password);
+        JwtSecurityToken Authenticate(int id, int password);
         Patient Get(Patient patient);
 
         void Save(Patient patient);

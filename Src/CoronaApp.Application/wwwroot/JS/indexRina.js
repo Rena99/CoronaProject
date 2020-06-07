@@ -10,8 +10,7 @@ let patientsPath = {
 let patient = {
     id: '',
     password:'',
-    age: '',
-    token:''
+    age: ''
 }
 
 const PasswordPatient = document.getElementById('PasswordPatient');
@@ -28,6 +27,7 @@ const cityOfPath = document.getElementById('city');
 const locationOfPath = document.getElementById('location');
 const patientAge = document.getElementById('patientAge');
 const deleted = document.getElementsByClassName('deleted');
+const getToken = document.getElementById('getToken');
 const oReq = new XMLHttpRequest();
 const urlPath = "https://localhost:44381/patient";
 let token = '';
@@ -71,6 +71,7 @@ let AddNewPatient = function AddNewPatientToDB(patient) {
     oReq.open("POST", url, true);
     let jsonString = JSON.stringify(patient);
     oReq.setRequestHeader("Content-Type", "application/json");
+    oReq.setRequestHeader("Authorization", token);
     oReq.send(jsonString);
 }
 
@@ -87,9 +88,9 @@ let getToken = function getNewToken(patient) {
         }
     }).then(
         result => {
-            return result;
+            token = result;
         },
-        reject => AddNewPatient(patient)
+        reject => alert("Your password or id is incorrect")
     );
     oReq.open("Get", url, true);
     oReq.send();
@@ -109,7 +110,6 @@ let addPatient = function addAPatient(patientID, patientsAge,patientPassword) {
     if (patientPassword !== "") {
         patient.password = parseInt(patientPassword);
     }
-    token= getToken(patient);
     let url = urlPath + "/" + patient.id + "/" + patient.password + "/" + patient.age;
     let promise = new Promise(function (resolve, reject) {
         oReq.onreadystatechange = function () {
@@ -130,7 +130,7 @@ let addPatient = function addAPatient(patientID, patientsAge,patientPassword) {
                 addPath(result.path[i], hide);
             }
         },
-        reject => alert("reject ...")
+        reject => AddNewPatient(patient)
     );
     oReq.open("Get", url, true);
     oReq.send();
@@ -242,6 +242,7 @@ let DeletePaths = function savePathsOfPatient(id) {
     );
     oReq.open("DELETE", url, true);
     oReq.setRequestHeader("Content-Type", "application/json");
+    oReq.setRequestHeader("Authorization", token);
     let jsonString = JSON.stringify(id);
     console.log(jsonString);
     oReq.send(jsonString);
@@ -264,6 +265,7 @@ let addPathObject = function addANewObjectToPatientPathArray(path) {
     );
     oReq.open("PUT", url, true);
     oReq.setRequestHeader("Content-Type", "application/json");
+    oReq.setRequestHeader("Authorization", token);
     let jsonString = JSON.stringify(path);
     console.log(jsonString);
     oReq.send(jsonString);
@@ -288,6 +290,21 @@ let removeDataTable = function removeDataTableFromDisplay() {
     }
 };
 
+getToken.addEventListener('click', function () {
+    if (patientID.value === '' || PasswordPatient.value === '') {
+        alert("no id and password inputed");
+    }
+    else {
+        getToken(patientID.value, PasswordPatient.value);
+        getToken.style.display = 'none';
+        newPatient.style.display = 'inline';
+        patientID.value = '';
+        patientID.style.display = 'inline';
+        patientAge.style.display = 'inline';
+        PasswordPatient.style.display = 'none';
+
+    }
+});
 newPatient.addEventListener('click', function () {
     if (patientID.value===''|| PasswordPatient.value==='') {
         alert("no id and password patient");

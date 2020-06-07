@@ -16,10 +16,9 @@ namespace CoronaApp.Dal
     public class PatientRepository : IPatientRepository
     {
         private readonly CoronaContext context;
-        public PatientRepository(CoronaContext context, IOptions<AppSettings> appSettings)
+        public PatientRepository(CoronaContext context)
         {
             this.context = context;
-            _appSettings = appSettings.Value;
         }
 
    
@@ -81,34 +80,6 @@ namespace CoronaApp.Dal
         {
             context.Patient.Add(patient);
             context.SaveChanges();
-        }
-        private readonly AppSettings _appSettings;
-
-    
-
-        public Patient Authenticate(int id, int password)
-        {
-            var user = context.Patient./*Include(p=>p.Path).*/SingleOrDefault(x => x.Id==id && x.PasswordPatient == password);
-            // return null if user not found
-            if (user == null)
-                return null;
-            // authentication successful so generate jwt token
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
-            var tokenDescriptor = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(new Claim[]
-                {
-                    new Claim(ClaimTypes.Name, user.Id.ToString())
-                }),
-                Expires = DateTime.UtcNow.AddDays(7),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-            };
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            user.Token = tokenHandler.WriteToken(token);
-
-            //context.SaveChanges();
-            return user;
         }
     }
 }
