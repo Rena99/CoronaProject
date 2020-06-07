@@ -21,7 +21,19 @@ body{
     display:block;
 }
 
-#patientID{
+#patientID {
+    width: 200px;
+    height: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    color: snow;
+    background-color: rgba(2, 2, 68, 0.521);
+    border-width: 2px;
+    border-color: snow;
+    position: inherit;
+}
+
+#PasswordPatient {
     width: 200px;
     height: 30px;
     font-family: Arial, Helvetica, sans-serif;

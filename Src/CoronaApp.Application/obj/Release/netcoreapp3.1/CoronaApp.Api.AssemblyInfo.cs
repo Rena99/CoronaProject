@@ -11,10 +11,9 @@
 using System;
 using System.Reflection;
 
-[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("CoronaApp.Dal", "C:\\Users\\rina lerner\\Documents\\Brix\\Rina-rachelly-master\\Exec3\\CoranaApp-master\\S" +
-    "rc\\CoronaApp.Dal", "CoronaApp.Dal.csproj", "0")]
-[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("CoronaApp.Services", "C:\\Users\\rina lerner\\Documents\\Brix\\Rina-rachelly-master\\Exec3\\CoranaApp-master\\S" +
-    "rc\\CoranaApp.Services", "CoronaApp.Services.csproj", "0")]
+[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("CoronaApp.Dal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "C:\\Users\\RLemberger\\Documents\\Brix\\Rina&Rachelly\\CoronaProject\\Src\\CoronaApp.Dal", "CoronaApp.Dal.csproj", "0")]
+[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("CoronaApp.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "C:\\Users\\RLemberger\\Documents\\Brix\\Rina&Rachelly\\CoronaProject\\Src\\CoranaApp.Serv" +
+    "ices", "CoronaApp.Services.csproj", "0")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("CoronaApp.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rina lerner\\Documents\\Brix\\Rina-rachelly-master\\Exec3\\CoranaApp-master\\Src\\CoronaApp.Application\\CoronaApp.Api.csproj": {}
+    "C:\\Users\\RLemberger\\Documents\\Brix\\Rina&Rachelly\\CoronaProject\\Src\\CoronaApp.Application\\CoronaApp.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rina lerner\\Documents\\Brix\\Rina-rachelly-master\\Exec3\\CoranaApp-master\\Src\\CoranaApp.Services\\CoronaApp.Services.csproj": {
+    "C:\\Users\\RLemberger\\Documents\\Brix\\Rina&Rachelly\\CoronaProject\\Src\\CoranaApp.Services\\CoronaApp.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rina lerner\\Documents\\Brix\\Rina-rachelly-master\\Exec3\\CoranaApp-master\\Src\\CoranaApp.Services\\CoronaApp.Services.csproj",
+        "projectUniqueName": "C:\\Users\\RLemberger\\Documents\\Brix\\Rina&Rachelly\\CoronaProject\\Src\\CoranaApp.Services\\CoronaApp.Services.csproj",
         "projectName": "CoronaApp.Services",
-        "projectPath": "C:\\Users\\rina lerner\\Documents\\Brix\\Rina-rachelly-master\\Exec3\\CoranaApp-master\\Src\\CoranaApp.Services\\CoronaApp.Services.csproj",
-        "packagesPath": "C:\\Users\\rina lerner\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rina lerner\\Documents\\Brix\\Rina-rachelly-master\\Exec3\\CoranaApp-master\\Src\\CoranaApp.Services\\obj\\",
+        "projectPath": "C:\\Users\\RLemberger\\Documents\\Brix\\Rina&Rachelly\\CoronaProject\\Src\\CoranaApp.Services\\CoronaApp.Services.csproj",
+        "packagesPath": "C:\\Users\\RLemberger\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\RLemberger\\Documents\\Brix\\Rina&Rachelly\\CoronaProject\\Src\\CoranaApp.Services\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\rina lerner\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\RLemberger\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -95,17 +95,17 @@
         }
       }
     },
-    "C:\\Users\\rina lerner\\Documents\\Brix\\Rina-rachelly-master\\Exec3\\CoranaApp-master\\Src\\CoronaApp.Application\\CoronaApp.Api.csproj": {
+    "C:\\Users\\RLemberger\\Documents\\Brix\\Rina&Rachelly\\CoronaProject\\Src\\CoronaApp.Application\\CoronaApp.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rina lerner\\Documents\\Brix\\Rina-rachelly-master\\Exec3\\CoranaApp-master\\Src\\CoronaApp.Application\\CoronaApp.Api.csproj",
+        "projectUniqueName": "C:\\Users\\RLemberger\\Documents\\Brix\\Rina&Rachelly\\CoronaProject\\Src\\CoronaApp.Application\\CoronaApp.Api.csproj",
         "projectName": "CoronaApp.Api",
-        "projectPath": "C:\\Users\\rina lerner\\Documents\\Brix\\Rina-rachelly-master\\Exec3\\CoranaApp-master\\Src\\CoronaApp.Application\\CoronaApp.Api.csproj",
-        "packagesPath": "C:\\Users\\rina lerner\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rina lerner\\Documents\\Brix\\Rina-rachelly-master\\Exec3\\CoranaApp-master\\Src\\CoronaApp.Application\\obj\\",
+        "projectPath": "C:\\Users\\RLemberger\\Documents\\Brix\\Rina&Rachelly\\CoronaProject\\Src\\CoronaApp.Application\\CoronaApp.Api.csproj",
+        "packagesPath": "C:\\Users\\RLemberger\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\RLemberger\\Documents\\Brix\\Rina&Rachelly\\CoronaProject\\Src\\CoronaApp.Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\rina lerner\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\RLemberger\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -118,11 +118,11 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\rina lerner\\Documents\\Brix\\Rina-rachelly-master\\Exec3\\CoranaApp-master\\Src\\CoranaApp.Services\\CoronaApp.Services.csproj": {
-                "projectPath": "C:\\Users\\rina lerner\\Documents\\Brix\\Rina-rachelly-master\\Exec3\\CoranaApp-master\\Src\\CoranaApp.Services\\CoronaApp.Services.csproj"
+              "C:\\Users\\RLemberger\\Documents\\Brix\\Rina&Rachelly\\CoronaProject\\Src\\CoranaApp.Services\\CoronaApp.Services.csproj": {
+                "projectPath": "C:\\Users\\RLemberger\\Documents\\Brix\\Rina&Rachelly\\CoronaProject\\Src\\CoranaApp.Services\\CoronaApp.Services.csproj"
               },
-              "C:\\Users\\rina lerner\\Documents\\Brix\\Rina-rachelly-master\\Exec3\\CoranaApp-master\\Src\\CoronaApp.Dal\\CoronaApp.Dal.csproj": {
-                "projectPath": "C:\\Users\\rina lerner\\Documents\\Brix\\Rina-rachelly-master\\Exec3\\CoranaApp-master\\Src\\CoronaApp.Dal\\CoronaApp.Dal.csproj"
+              "C:\\Users\\RLemberger\\Documents\\Brix\\Rina&Rachelly\\CoronaProject\\Src\\CoronaApp.Dal\\CoronaApp.Dal.csproj": {
+                "projectPath": "C:\\Users\\RLemberger\\Documents\\Brix\\Rina&Rachelly\\CoronaProject\\Src\\CoronaApp.Dal\\CoronaApp.Dal.csproj"
               }
             }
           }
@@ -136,9 +136,37 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "Glimpse.Mvc5": {
+              "target": "Package",
+              "version": "[1.5.3, )"
+            },
+            "Microsoft.AspNetCore.Authentication": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[3.1.4, )"
+            },
+            "Microsoft.AspNetCore.CookiePolicy": {
+              "target": "Package",
+              "version": "[2.2.8, )"
+            },
+            "Microsoft.AspNetCore.HttpsPolicy": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Microsoft.AspNetCore.Mvc.Testing": {
               "target": "Package",
               "version": "[3.1.4, )"
+            },
+            "Microsoft.AspNetCore.Session": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.StaticFiles": {
+              "target": "Package",
+              "version": "[2.2.0, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -159,6 +187,38 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[3.1.4, )"
+            },
+            "Octokit": {
+              "target": "Package",
+              "version": "[0.47.0, )"
+            },
+            "Octokit.Caching": {
+              "target": "Package",
+              "version": "[1.0.6, )"
+            },
+            "Octokit.Extensions": {
+              "target": "Package",
+              "version": "[1.0.7, )"
+            },
+            "Refit": {
+              "target": "Package",
+              "version": "[5.1.67, )"
+            },
+            "ScriptCs.Octokit": {
+              "target": "Package",
+              "version": "[0.5.10, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[3.2.0, )"
+            },
+            "Serilog.Settings.Configuration": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
+            "Serilog.Sinks.MSSqlServer": {
+              "target": "Package",
+              "version": "[5.4.0, )"
             }
           },
           "imports": [
@@ -189,17 +249,17 @@
         }
       }
     },
-    "C:\\Users\\rina lerner\\Documents\\Brix\\Rina-rachelly-master\\Exec3\\CoranaApp-master\\Src\\CoronaApp.Dal\\CoronaApp.Dal.csproj": {
+    "C:\\Users\\RLemberger\\Documents\\Brix\\Rina&Rachelly\\CoronaProject\\Src\\CoronaApp.Dal\\CoronaApp.Dal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rina lerner\\Documents\\Brix\\Rina-rachelly-master\\Exec3\\CoranaApp-master\\Src\\CoronaApp.Dal\\CoronaApp.Dal.csproj",
+        "projectUniqueName": "C:\\Users\\RLemberger\\Documents\\Brix\\Rina&Rachelly\\CoronaProject\\Src\\CoronaApp.Dal\\CoronaApp.Dal.csproj",
         "projectName": "CoronaApp.Dal",
-        "projectPath": "C:\\Users\\rina lerner\\Documents\\Brix\\Rina-rachelly-master\\Exec3\\CoranaApp-master\\Src\\CoronaApp.Dal\\CoronaApp.Dal.csproj",
-        "packagesPath": "C:\\Users\\rina lerner\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rina lerner\\Documents\\Brix\\Rina-rachelly-master\\Exec3\\CoranaApp-master\\Src\\CoronaApp.Dal\\obj\\",
+        "projectPath": "C:\\Users\\RLemberger\\Documents\\Brix\\Rina&Rachelly\\CoronaProject\\Src\\CoronaApp.Dal\\CoronaApp.Dal.csproj",
+        "packagesPath": "C:\\Users\\RLemberger\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\RLemberger\\Documents\\Brix\\Rina&Rachelly\\CoronaProject\\Src\\CoronaApp.Dal\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\rina lerner\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\RLemberger\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -212,8 +272,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\rina lerner\\Documents\\Brix\\Rina-rachelly-master\\Exec3\\CoranaApp-master\\Src\\CoranaApp.Services\\CoronaApp.Services.csproj": {
-                "projectPath": "C:\\Users\\rina lerner\\Documents\\Brix\\Rina-rachelly-master\\Exec3\\CoranaApp-master\\Src\\CoranaApp.Services\\CoronaApp.Services.csproj"
+              "C:\\Users\\RLemberger\\Documents\\Brix\\Rina&Rachelly\\CoronaProject\\Src\\CoranaApp.Services\\CoronaApp.Services.csproj": {
+                "projectPath": "C:\\Users\\RLemberger\\Documents\\Brix\\Rina&Rachelly\\CoronaProject\\Src\\CoranaApp.Services\\CoronaApp.Services.csproj"
               }
             }
           }
@@ -227,6 +287,10 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "Lucene.Net": {
+              "target": "Package",
+              "version": "[3.0.3, )"
+            },
             "Microsoft.AspNetCore.Mvc.Testing": {
               "target": "Package",
               "version": "[3.1.4, )"
@@ -250,6 +314,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[3.1.4, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.6.0, )"
             }
           },
           "imports": [

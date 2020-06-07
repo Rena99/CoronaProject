@@ -9,9 +9,12 @@ let patientsPath = {
 
 let patient = {
     id: '',
+    password:'',
     age: '',
+    token:''
 }
 
+const PasswordPatient = document.getElementById('PasswordPatient');
 const dataTable = document.getElementById('dataTable');
 const newPatient = document.getElementById('addUser');
 const newPath = document.getElementById('addNewRow');
@@ -27,8 +30,10 @@ const patientAge = document.getElementById('patientAge');
 const deleted = document.getElementsByClassName('deleted');
 const oReq = new XMLHttpRequest();
 const urlPath = "https://localhost:44381/patient";
+let token = '';
 
 let changeHTML = function changeHTMLAttributes(patient) {
+    PasswordPatient.style.display = 'none';
     patientID.style.display = 'none';
     patientAge.style.display = 'none';
     inputedPatientsID.innerText = patientID.value;
@@ -68,16 +73,44 @@ let AddNewPatient = function AddNewPatientToDB(patient) {
     oReq.setRequestHeader("Content-Type", "application/json");
     oReq.send(jsonString);
 }
-let addPatient = function addAPatient(patientID, patientsAge) {
+
+let getToken = function getNewToken(patient) {
+    let url = urlPath + "/" + patient.id + "/" + patient.password;
+    let promise = new Promise(function (resolve, reject) {
+        oReq.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                resolve(JSON.parse(this.responseText));
+            }
+            if (this.readyState === 4 && this.status !== 200) {
+                reject();
+            }
+        }
+    }).then(
+        result => {
+            return result;
+        },
+        reject => AddNewPatient(patient)
+    );
+    oReq.open("Get", url, true);
+    oReq.send();
+};
+
+let addPatient = function addAPatient(patientID, patientsAge,patientPassword) {
     patient.age = 0;
+    patient.password = 0;
     patient.id = 0;
+    
     if (patientID !== "") {
         patient.id = parseInt(patientID);
     }
     if (patientsAge !== "") {
         patient.age = parseInt(patientsAge);
     }
-    let url = urlPath + "/" + patient.id + "/" + patient.age;
+    if (patientPassword !== "") {
+        patient.password = parseInt(patientPassword);
+    }
+    token= getToken(patient);
+    let url = urlPath + "/" + patient.id + "/" + patient.password + "/" + patient.age;
     let promise = new Promise(function (resolve, reject) {
         oReq.onreadystatechange = function () {
             if (this.readyState === 4 && this.status === 200) {
@@ -97,11 +130,13 @@ let addPatient = function addAPatient(patientID, patientsAge) {
                 addPath(result.path[i], hide);
             }
         },
-        reject => AddNewPatient(patient)
+        reject => alert("reject ...")
     );
     oReq.open("Get", url, true);
     oReq.send();
+    oReq.setRequestHeader("Authorization", token);
     changeHTML(patient);
+   
 };
 
 let deleteInput = function deleteInputItems() {
@@ -254,7 +289,12 @@ let removeDataTable = function removeDataTableFromDisplay() {
 };
 
 newPatient.addEventListener('click', function () {
-    addPatient(patientID.value, patientAge.value);
+    if (patientID.value===''|| PasswordPatient.value==='') {
+        alert("no id and password patient");
+    }
+    else {
+        addPatient(patientID.value, patientAge.value, PasswordPatient.value);
+    }
 });
 
 newPath.addEventListener('click', function () {
@@ -272,6 +312,8 @@ switchPatient.addEventListener('click', function () {
     patientID.value = '';
     patientID.style.display = 'inline';
     patientAge.value = '';
+    PasswordPatient.value = '';
+    PasswordPatient.style.display = 'inline';
     patientAge.style.display = 'inline';
     newPatient.style.display = 'inline';
     table.style.display = 'none';

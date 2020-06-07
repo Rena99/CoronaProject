@@ -11,8 +11,6 @@
 using System;
 using System.Reflection;
 
-[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("CoronaApp.Dal", "C:\\Users\\rina lerner\\Documents\\Brix\\Rina-rachelly-master\\Exec3\\CoranaApp-master\\S" +
-    "rc\\CoronaApp.Dal", "CoronaApp.Dal.csproj", "0")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("CoronaApp.Services")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]

@@ -1,9 +1,11 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace CoronaApp.Services
 {
     public class Location
     {
+        [Key]
         public int Id { get; set; }
         public string City { get; set; }
         public string LocationC { get; set; }

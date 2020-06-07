@@ -11,20 +11,22 @@ namespace CoronaApp.Dal
 {
     public class LocationRepository : ILocationRepository
     {
-        private readonly string con;
-        public LocationRepository(string _con)
-        {
-            _con = con;
-        }
+        //private readonly string con;
+        //public LocationRepository(string _con)
+        //{
+        //    _con = con;
+        //}
         public LocationRepository()
         {
 
         }
+        private readonly CoronaContext context;
+        public LocationRepository(CoronaContext context)
+        {
+            this.context = context;
+        }
         ICollection<Location> ILocationRepository.GetAllList(List<Location> listPatient)
         {
-            //var listPatient = new List<Location>();
-            CoronaContext context = new CoronaContext();
-
             foreach (var item in context.Patient.Include(x => x.Path))
             {
                 foreach (var item2 in item.Path)
@@ -55,14 +57,14 @@ namespace CoronaApp.Dal
         }
         public ICollection<Location> SearchByCity(LocationSearch locationSearch)
         {
-            CoronaContext context = new CoronaContext();
+           // CoronaContext context = new CoronaContext();
             var listOfSpecificCity = context.Location.Where(l => l.City == locationSearch.City).ToList();
             return listOfSpecificCity;
         }
         public ICollection<Location> SearchByDate(LocationSearch locationSearch)
         {
             var listPatient = new List<Location>();
-            CoronaContext context = new CoronaContext();
+           // CoronaContext context = new CoronaContext();
             foreach (var item in context.Patient.Include(x => x.Path))
             {
                 foreach (var item2 in item.Path)
