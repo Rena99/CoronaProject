@@ -1,5 +1,7 @@
 ﻿
 using CoronaApp.Services;
+using CoronaApp.Services.Helpers;
+using Lucene.Net.Analysis;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -16,9 +18,11 @@ namespace CoronaApp.Dal
     public class PatientRepository : IPatientRepository
     {
         private readonly CoronaContext context;
-        public PatientRepository(CoronaContext context)
+        private readonly AppSettings appSettings;
+        public PatientRepository(CoronaContext context, IOptions<AppSettings> appSettings)
         {
             this.context = context;
+            this.appSettings = appSettings.Value;
         }
 
 
@@ -46,34 +50,58 @@ namespace CoronaApp.Dal
 
         public Patient Get(Patient patient)
         {
-            Patient result = new Patient();
-            if (patient.Id != 0 )
+            var user = context.Patient.Include(p=>p.Path).SingleOrDefault(x => x.Id == patient.Id && x.Password == patient.Password);
+            if (user == null)
+                return null;
+            //authentication successful so generate jwt token
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+            var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Patient patient1 = context.Patient.Include(p => p.Path).FirstOrDefault(p => p.Id == patient.Id
-              );
-                if (patient1 == null)
+                Subject = new ClaimsIdentity(new Claim[]
                 {
-                    return null;
-                }
-                result = new Patient() { Id = patient1.Id, Age = patient1.Age};
-                foreach (var item in patient1.Path)
-                {
-                    result.Path.Add(item);
-                }
-            }
-            if (patient.Age != 0 && patient.Id == 0)
-            {
-                List<Patient> patients = context.Patient.Include(p => p.Path).Where(p => p.Age == patient.Age).ToList();
-                result = new Patient() { Id = 0, Age = 0 };
-                foreach (var item in patients)
-                {
-                    foreach (var path in item.Path)
-                    {
-                        result.Path.Add(path);
-                    }
-                }
-            }
-            return result;
+                    new Claim(ClaimTypes.Name, patient.Name)
+                }),
+                Expires = DateTime.UtcNow.AddDays(1),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
+            JwtSecurityToken token = (JwtSecurityToken)tokenHandler.CreateToken(tokenDescriptor);
+            user.Token=tokenHandler.WriteToken(token);
+            return user;
+            //return (JwtSecurityToken)
+            //user.Token = 
+
+            //    //context.SaveChanges();
+            //    //return user;
+            //}
+            //Patient result = new Patient();
+            //if (patient.Id != 0 )
+            //{
+            //    Patient patient1 = context.Patient.Include(p => p.Path).FirstOrDefault(p => p.Id == patient.Id
+            //  );
+            //    if (patient1 == null)
+            //    {
+            //        return null;
+            //    }
+            //    result = new Patient() { Id = patient1.Id, Age = patient1.Age};
+            //    foreach (var item in patient1.Path)
+            //    {
+            //        result.Path.Add(item);
+            //    }
+            //}
+            //if (patient.Age != 0 && patient.Id == 0)
+            //{
+            //    List<Patient> patients = context.Patient.Include(p => p.Path).Where(p => p.Age == patient.Age).ToList();
+            //    result = new Patient() { Id = 0, Age = 0 };
+            //    foreach (var item in patients)
+            //    {
+            //        foreach (var path in item.Path)
+            //        {
+            //            result.Path.Add(path);
+            //        }
+            //    }
+            //}
+            //return result;
         }
 
         public void Save(Patient patient)

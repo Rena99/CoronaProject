@@ -45,7 +45,7 @@ body{
     position: inherit;
 }
 
-#patientAge {
+#patientAge, #patientName {
     width: 150px;
     height: 30px;
     font-family: Arial, Helvetica, sans-serif;
@@ -55,7 +55,6 @@ body{
     border-width: 2px;
     border-color: snow;
     position: inherit;
-    display:none;
 }
 
 #addUser{
@@ -68,10 +67,9 @@ body{
     border-width: 2px;
     border-color: snow;
     position: inherit;
-    display:none;
 }
 #getToken {
-    width: 40px;
+    width: 200px;
     height: 36px;
     font-family: Arial, Helvetica, sans-serif;
     font-size: large;
@@ -80,7 +78,6 @@ body{
     border-width: 2px;
     border-color: snow;
     position: inherit;
-    
 }
 
 #inputedPatientsID{

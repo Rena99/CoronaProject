@@ -20,43 +20,29 @@ namespace CoronaApp.Api.Controllers
             PatientService = patientService;
         }
         // GET api/<PatientController>/5
-        
-        
-        [HttpGet("{id}/{age}")]
-        public Patient Get([Range(100000000,999999999)] int id, [Range(0, 120)] int age)
+
+        [AllowAnonymous]
+        [HttpGet("{id}/{password}/{name}")]
+        public Patient Get([Range(100000000,999999999)] int id, int password, string name)
         {
-            return PatientService.Get(new Patient() { Id = id, Age = age });
+            //return PatientService.Get(new Patient() { Id = id, Age = age });
+            return PatientService.Authenticate(id, password, name);
         }
          
         [AllowAnonymous]
         [HttpGet("Authenticate/{id}/{password}")]
         
-        public JwtSecurityToken Authenticate(int id,int password)
-        {
-            return PatientService.Authenticate(id,password);
-        }
+        //public JwtSecurityToken Authenticate(int id,int password)
+        //{
+        //    return PatientService.Authenticate(id,password);
+        //}
         // POST api/<PatientController>
         [HttpPost]
         public void Post([FromBody] Patient value)
         {
-            //var user = PatientService.Authenticate(value.Id, value.PasswordPatient);
-            //if (user == null)
-            //    return BadRequest(new { message = "Username or password is incorrect" });
-            //return Ok(user);
+            
             PatientService.Save(value);
         }
-
-        //[AllowAnonymous]
-        //[HttpPost("authenticate")]
-        //public IActionResult Authenticate([FromBody] AuthenticateModel model)
-        //{
-        //    var user = _userService.Authenticate(model.Username, model.Password);
-
-        //    if (user == null)
-        //        return BadRequest(new { message = "Username or password is incorrect" });
-
-        //    return Ok(user);
-        //}
 
         // PUT api/<PatientController>/5
         [HttpPut("{id}")]
