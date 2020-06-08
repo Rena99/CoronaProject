@@ -84,8 +84,6 @@ namespace CoronaApp.Dal
         }
         private readonly AppSettings _appSettings;
 
-    
-
         public Patient Authenticate(int id, int password)
         {
             var user = context.Patient./*Include(p=>p.Path).*/SingleOrDefault(x => x.Id==id && x.PasswordPatient == password);

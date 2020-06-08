@@ -91,10 +91,8 @@ namespace CoronaApp.Api.Controllers
         public void Post([FromBody] Patient value)
         {
             //var user = PatientService.Authenticate(value.Id, value.PasswordPatient);
-
             //if (user == null)
             //    return BadRequest(new { message = "Username or password is incorrect" });
-
             //return Ok(user);
             PatientService.Save(value);
         }
