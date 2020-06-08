@@ -7,7 +7,7 @@ namespace CoronaApp.Services
 {
     public interface IPatientService
     {
-        JwtSecurityToken Authenticate(int id, int password);
+        Patient Authenticate(int id, int password, string name);
         Patient Get(Patient patient);
 
         void Save(Patient patient);
