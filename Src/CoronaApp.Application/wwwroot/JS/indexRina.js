@@ -9,7 +9,6 @@ let patientsPath = {
 
 let patient = {
     id: '',
-    password:'',
     age: ''
 }
 
@@ -75,8 +74,8 @@ let AddNewPatient = function AddNewPatientToDB(patient) {
     oReq.send(jsonString);
 }
 
-let getToken = function getNewToken(patient) {
-    let url = urlPath + "/" + patient.id + "/" + patient.password;
+let getTokenFunction = function getNewToken(id,password) {
+    let url = urlPath + "/Authenticate/" + id + "/" + password;
     let promise = new Promise(function (resolve, reject) {
         oReq.onreadystatechange = function () {
             if (this.readyState === 4 && this.status === 200) {
@@ -88,7 +87,7 @@ let getToken = function getNewToken(patient) {
         }
     }).then(
         result => {
-            token = result;
+            token = result.rawData;
         },
         reject => alert("Your password or id is incorrect")
     );
@@ -96,9 +95,8 @@ let getToken = function getNewToken(patient) {
     oReq.send();
 };
 
-let addPatient = function addAPatient(patientID, patientsAge,patientPassword) {
+let addPatient = function addAPatient(patientID, patientsAge) {
     patient.age = 0;
-    patient.password = 0;
     patient.id = 0;
     
     if (patientID !== "") {
@@ -107,10 +105,9 @@ let addPatient = function addAPatient(patientID, patientsAge,patientPassword) {
     if (patientsAge !== "") {
         patient.age = parseInt(patientsAge);
     }
-    if (patientPassword !== "") {
-        patient.password = parseInt(patientPassword);
-    }
-    let url = urlPath + "/" + patient.id + "/" + patient.password + "/" + patient.age;
+   
+ 
+    let url = urlPath + "/" + patient.id  + "/" + patient.age;
     let promise = new Promise(function (resolve, reject) {
         oReq.onreadystatechange = function () {
             if (this.readyState === 4 && this.status === 200) {
@@ -133,8 +130,8 @@ let addPatient = function addAPatient(patientID, patientsAge,patientPassword) {
         reject => AddNewPatient(patient)
     );
     oReq.open("Get", url, true);
-    oReq.send();
     oReq.setRequestHeader("Authorization", token);
+    oReq.send();
     changeHTML(patient);
    
 };
@@ -295,7 +292,7 @@ getToken.addEventListener('click', function () {
         alert("no id and password inputed");
     }
     else {
-        getToken(patientID.value, PasswordPatient.value);
+        getTokenFunction(patientID.value, PasswordPatient.value);
         getToken.style.display = 'none';
         newPatient.style.display = 'inline';
         patientID.value = '';
@@ -306,12 +303,7 @@ getToken.addEventListener('click', function () {
     }
 });
 newPatient.addEventListener('click', function () {
-    if (patientID.value===''|| PasswordPatient.value==='') {
-        alert("no id and password patient");
-    }
-    else {
-        addPatient(patientID.value, patientAge.value, PasswordPatient.value);
-    }
+        addPatient(patientID.value, patientAge.value);
 });
 
 newPath.addEventListener('click', function () {

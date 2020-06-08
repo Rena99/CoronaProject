@@ -16,7 +16,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore;
 using CoronaApp.Api.Middleware;
 using Glimpse.Mvc.AlternateType;
-using CoronaApp.Dal.Helpers;
+using CoronaApp.Services.Helpers;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;

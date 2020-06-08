@@ -3057,7 +3057,9 @@
           "EntityFramework": "6.4.4",
           "Microsoft.AspNetCore.Mvc.Testing": "3.1.4",
           "Microsoft.EntityFrameworkCore": "3.1.4",
-          "Microsoft.EntityFrameworkCore.SqlServer": "3.1.4"
+          "Microsoft.EntityFrameworkCore.SqlServer": "3.1.4",
+          "Microsoft.IdentityModel.Tokens": "6.6.0",
+          "System.IdentityModel.Tokens.Jwt": "6.6.0"
         },
         "runtime": {
           "CoronaApp.Services.dll": {}
