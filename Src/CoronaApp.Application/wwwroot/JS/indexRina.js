@@ -67,10 +67,10 @@ let AddNewPatient = function AddNewPatientToDB(patient) {
     ).catch(e => {
         console.log(e);
     });
-    oReq.open("POST", url, true);
+    oReq.open("POST", url+ '?access_token=' + encodeURIComponent(token), true);
     let jsonString = JSON.stringify(patient);
     oReq.setRequestHeader("Content-Type", "application/json");
-    oReq.setRequestHeader("Authorization", token);
+   // oReq.setRequestHeader("Authorization", token);
     oReq.send(jsonString);
 }
 
@@ -91,7 +91,7 @@ let getTokenFunction = function getNewToken(id,password) {
         },
         reject => alert("Your password or id is incorrect")
     );
-    oReq.open("Get", url, true);
+    oReq.open("Get", url+ '?access_token=' + encodeURIComponent(token), true);
     oReq.send();
 };
 
@@ -129,8 +129,10 @@ let addPatient = function addAPatient(patientID, patientsAge) {
         },
         reject => AddNewPatient(patient)
     );
+    
     oReq.open("Get", url, true);
-    oReq.setRequestHeader("Authorization", token);
+    oReq.Headers.Add("Authorization", "Bearer " + token);
+    //oReq.setRequestHeader("Authorization", token);
     oReq.send();
     changeHTML(patient);
    
@@ -237,9 +239,9 @@ let DeletePaths = function savePathsOfPatient(id) {
         result => console.log("Worked"),
         reject => alert("Bad Response")
     );
-    oReq.open("DELETE", url, true);
+    oReq.open("DELETE", url + '?access_token=' + encodeURIComponent(token), true);
     oReq.setRequestHeader("Content-Type", "application/json");
-    oReq.setRequestHeader("Authorization", token);
+    //oReq.setRequestHeader("Authorization", token);
     let jsonString = JSON.stringify(id);
     console.log(jsonString);
     oReq.send(jsonString);
@@ -260,9 +262,10 @@ let addPathObject = function addANewObjectToPatientPathArray(path) {
         result => addPath(result),
         reject => alert("Bad Response")
     );
-    oReq.open("PUT", url, true);
+    let b = url + '?access_token=' + encodeURIComponent(token);
+    oReq.open("PUT", url + '?access_token=' + encodeURIComponent(token), true);
     oReq.setRequestHeader("Content-Type", "application/json");
-    oReq.setRequestHeader("Authorization", token);
+   // oReq.setRequestHeader("Authorization", token);
     let jsonString = JSON.stringify(path);
     console.log(jsonString);
     oReq.send(jsonString);
