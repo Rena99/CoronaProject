@@ -13,7 +13,5 @@ namespace CoronaApp.Services
         Location Add(int id, Location location);
 
         void Delete(int id, int location);
-
-        Patient Authenticate(int username, int password);
     }
 }

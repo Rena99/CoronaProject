@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CoronaApp.Dal.Helpers
+namespace CoronaApp.Services.Helpers
 {
     public class AppSettings
     {

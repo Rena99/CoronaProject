@@ -16,10 +16,9 @@ namespace CoronaApp.Dal
     public class PatientRepository : IPatientRepository
     {
         private readonly CoronaContext context;
-        public PatientRepository(CoronaContext context, IOptions<AppSettings> appSettings)
+        public PatientRepository(CoronaContext context)
         {
             this.context = context;
-            _appSettings = appSettings.Value;
         }
 
    
@@ -82,6 +81,7 @@ namespace CoronaApp.Dal
             context.Patient.Add(patient);
             context.SaveChanges();
         }
+<<<<<<< HEAD
         private readonly AppSettings _appSettings;
 
         public Patient Authenticate(int id, int password)
@@ -108,5 +108,7 @@ namespace CoronaApp.Dal
             //context.SaveChanges();
             return user;
         }
+=======
+>>>>>>> 139973092349402ba719b7e564b4d4304d6451d2
     }
 }
