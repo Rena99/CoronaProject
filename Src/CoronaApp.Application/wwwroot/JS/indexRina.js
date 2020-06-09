@@ -32,14 +32,14 @@ const deleted = document.getElementsByClassName('deleted');
 //const getToken = document.getElementById('getToken');
 const oReq = new XMLHttpRequest();
 const urlPath = "https://localhost:44381/patient";
-const token = '';
+let token = '';
 
 let changeHTML = function changeHTMLAttributes(patient) {
     PasswordPatient.style.display = 'none';
     patientID.style.display = 'none';
     //patientAge.style.display = 'none';
     patientsName.style.display = 'none';
-    inputedPatientsID.innerText = patientsName.value;
+    inputedPatientsID.innerText = "Welcome " + patient.name;
     inputedPatientsID.style.display = 'block';
     switchPatient.style.display = 'block';
     newPatient.style.display = 'none';
@@ -65,22 +65,17 @@ let AddNewPatient = function AddNewPatientToDB(patient) {
         }
     }).then(
         result => {
-            console.log("success");
+            addPatient(patient.id, patient.password, patient.name)
         },
         reject => alert("Bad Response")
     ).catch(e => {
         console.log(e);
     });
-<<<<<<< HEAD
-    oReq.open("POST", url+ '?access_token=' + encodeURIComponent(token), true);
+
+    oReq.open("POST", url/*+ '?access_token=' + encodeURIComponent(token)*/, true);
     let jsonString = JSON.stringify(patient);
     oReq.setRequestHeader("Content-Type", "application/json");
    // oReq.setRequestHeader("Authorization", token);
-=======
-    oReq.open("POST", url + '?access_token=' + encodeURIComponent(token), true);
-    let jsonString = JSON.stringify(patient);
-    oReq.setRequestHeader("Content-Type", "application/json");
->>>>>>> c4cea5ccf969ced55b151bc4343ede832b61ae51
     oReq.send(jsonString);
 }
 
@@ -109,12 +104,13 @@ let addPatient = function addAPatient(patientID, patientPassword, patientName) {
     patient.password = 0;
     patient.id = 0;
     patient.name = '';
+    patient.age = 0;
     
     if (patientID !== "") {
         patient.id = parseInt(patientID);
     }
     if (patientPassword !== "") {
-        patient.age = parseInt(patientPassword);
+        patient.password = parseInt(patientPassword);
     }
     if (patientName !== "") {
         patient.name = patientName;
@@ -143,13 +139,9 @@ let addPatient = function addAPatient(patientID, patientPassword, patientName) {
         },
         reject => AddNewPatient(patient)
     );
-    
     oReq.open("Get", url, true);
-<<<<<<< HEAD
-    oReq.Headers.Add("Authorization", "Bearer " + token);
+    //oReq.Headers.Add("Authorization", "Bearer " + token);
     //oReq.setRequestHeader("Authorization", token);
-=======
->>>>>>> c4cea5ccf969ced55b151bc4343ede832b61ae51
     oReq.send();
     changeHTML(patient);
    
@@ -242,7 +234,7 @@ let addPath = function addAPathToAPatient(patientPath, hide) {
 };
 
 let DeletePaths = function savePathsOfPatient(id) {
-    let url = urlPath + "/" + inputedPatientsID.innerText;
+    let url = urlPath + "/" + patient.id;
     let promise = new Promise(function (resolve, reject) {
         oReq.onreadystatechange = function () {
             if (this.readyState === 4 && this.status === 200) {
@@ -256,19 +248,17 @@ let DeletePaths = function savePathsOfPatient(id) {
         result => console.log("Worked"),
         reject => alert("Bad Response")
     );
-    oReq.open("DELETE", url + '?access_token=' + encodeURIComponent(token), true);
+    oReq.open("DELETE", urlPath + "/" + token, true);
     oReq.setRequestHeader("Content-Type", "application/json");
-<<<<<<< HEAD
-    //oReq.setRequestHeader("Authorization", token);
-=======
->>>>>>> c4cea5ccf969ced55b151bc4343ede832b61ae51
+    oReq.setRequestHeader("Authorization", "Bearer "+token);
+
     let jsonString = JSON.stringify(id);
     console.log(jsonString);
     oReq.send(jsonString);
 }
 
 let addPathObject = function addANewObjectToPatientPathArray(path) {
-    let url = urlPath + "/" + inputedPatientsID.innerText;
+    let url = urlPath + "/" + patient.id;
     let promise = new Promise(function (resolve, reject) {
         oReq.onreadystatechange = function () {
             if (this.readyState === 4 && this.status === 200) {
@@ -282,15 +272,14 @@ let addPathObject = function addANewObjectToPatientPathArray(path) {
         result => addPath(result),
         reject => alert("Bad Response")
     );
-<<<<<<< HEAD
+
     let b = url + '?access_token=' + encodeURIComponent(token);
-    oReq.open("PUT", url + '?access_token=' + encodeURIComponent(token), true);
+    oReq.open("PUT", urlPath +"/"+ token, true);
     oReq.setRequestHeader("Content-Type", "application/json");
-   // oReq.setRequestHeader("Authorization", token);
-=======
-    oReq.open("PUT", url+ '?access_token=' + encodeURIComponent(token), true);
-    oReq.setRequestHeader("Authorization", token);
->>>>>>> c4cea5ccf969ced55b151bc4343ede832b61ae51
+    oReq.setRequestHeader("Authorization", "Bearer "+token);
+    
+
+
     let jsonString = JSON.stringify(path);
     console.log(jsonString);
     oReq.send(jsonString);
@@ -315,22 +304,22 @@ let removeDataTable = function removeDataTableFromDisplay() {
     }
 };
 
-getToken.addEventListener('click', function () {
-    if (patientID.value === '' || PasswordPatient.value === '') {
-        alert("no id and password inputed");
-    }
-    else {
-        getTokenFunction(patientID.value, PasswordPatient.value);
-        getToken.style.display = 'none';
-        newPatient.style.display = 'inline';
-        patientID.value = '';
-        patientID.style.display = 'inline';
-        patientAge.style.display = 'inline';
-        patientsName.style.display = 'inline';
-        PasswordPatient.style.display = 'none';
+//getToken.addEventListener('click', function () {
+//    if (patientID.value === '' || PasswordPatient.value === '') {
+//        alert("no id and password inputed");
+//    }
+//    else {
+//        getTokenFunction(patientID.value, PasswordPatient.value);
+//        getToken.style.display = 'none';
+//        newPatient.style.display = 'inline';
+//        patientID.value = '';
+//        patientID.style.display = 'inline';
+//        patientAge.style.display = 'inline';
+//        patientsName.style.display = 'inline';
+//        PasswordPatient.style.display = 'none';
 
-    }
-});
+//    }
+//});
 newPatient.addEventListener('click', function () {
     addPatient(patientID.value, PasswordPatient.value, patientsName.value);
 });

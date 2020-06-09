@@ -200,8 +200,6 @@ C:\Users\RLemberger\Documents\Brix\Rina&Rachelly\CoronaProject\Src\CoronaApp.App
 C:\Users\RLemberger\Documents\Brix\Rina&Rachelly\CoronaProject\Src\CoronaApp.Application\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\RLemberger\Documents\Brix\Rina&Rachelly\CoronaProject\Src\CoronaApp.Application\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
 C:\Users\RLemberger\Documents\Brix\Rina&Rachelly\CoronaProject\Src\CoronaApp.Application\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-C:\Users\RLemberger\Documents\Brix\Rina&Rachelly\CoronaProject\Src\CoronaApp.Application\obj\Debug\netcoreapp3.1\CoronaApp.Api.csproj.CoreCompileInputs.cache
-C:\Users\RLemberger\Documents\Brix\Rina&Rachelly\CoronaProject\Src\CoronaApp.Application\obj\Debug\netcoreapp3.1\CoronaApp.Api.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\rina lerner\Documents\Brix\AuthProject\CoronaProject\Src\CoronaApp.Application\bin\Debug\netcoreapp3.1\Web.Test.config
 C:\Users\rina lerner\Documents\Brix\AuthProject\CoronaProject\Src\CoronaApp.Application\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\rina lerner\Documents\Brix\AuthProject\CoronaProject\Src\CoronaApp.Application\bin\Debug\netcoreapp3.1\appsettings.json
@@ -319,3 +317,6 @@ C:\Users\rina lerner\Documents\Brix\AuthProject\CoronaProject\Src\CoronaApp.Appl
 C:\Users\rina lerner\Documents\Brix\AuthProject\CoronaProject\Src\CoronaApp.Application\obj\Debug\netcoreapp3.1\CoronaApp.Api.dll
 C:\Users\rina lerner\Documents\Brix\AuthProject\CoronaProject\Src\CoronaApp.Application\obj\Debug\netcoreapp3.1\CoronaApp.Api.pdb
 C:\Users\rina lerner\Documents\Brix\AuthProject\CoronaProject\Src\CoronaApp.Application\obj\Debug\netcoreapp3.1\CoronaApp.Api.genruntimeconfig.cache
+C:\Users\RLemberger\Documents\Brix\Rina&Rachelly\CoronaProject\Src\CoronaApp.Application\bin\Debug\netcoreapp3.1\jose-jwt.dll
+C:\Users\RLemberger\Documents\Brix\Rina&Rachelly\CoronaProject\Src\CoronaApp.Application\obj\Debug\netcoreapp3.1\CoronaApp.Api.csproj.CoreCompileInputs.cache
+C:\Users\RLemberger\Documents\Brix\Rina&Rachelly\CoronaProject\Src\CoronaApp.Application\obj\Debug\netcoreapp3.1\CoronaApp.Api.MvcApplicationPartsAssemblyInfo.cache

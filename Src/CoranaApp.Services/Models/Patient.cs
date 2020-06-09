@@ -13,8 +13,8 @@ namespace CoronaApp.Services
         public int Id { get; set; }
         public int Age { get; set; }
 
-        public int Password { get; set; }
-        public string Name { get; set; }
+        public int PasswordPatient { get; set; }
+        public string PatientName { get; set; }
 
         public string Token { get; set; }
         public List<Location> Path { get; set; }

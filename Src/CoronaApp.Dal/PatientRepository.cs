@@ -50,7 +50,8 @@ namespace CoronaApp.Dal
 
         public Patient Get(Patient patient)
         {
-            var user = context.Patient.Include(p=>p.Path).SingleOrDefault(x => x.Id == patient.Id && x.Password == patient.Password);
+            var user = context.Patient.Include(p=>p.Path).SingleOrDefault(x => x.Id == patient.Id 
+            && x.PasswordPatient == patient.PasswordPatient);
             if (user == null)
                 return null;
             //authentication successful so generate jwt token
@@ -60,7 +61,9 @@ namespace CoronaApp.Dal
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, patient.Name)
+                    new Claim(ClaimTypes.Name, patient.PatientName),
+                    new Claim(ClaimTypes.Role, patient.Id.ToString())
+
                 }),
                 Expires = DateTime.UtcNow.AddDays(1),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)

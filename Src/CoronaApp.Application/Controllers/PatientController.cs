@@ -1,9 +1,12 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
+using System.Threading.Tasks;
 using CoronaApp.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -23,38 +26,51 @@ namespace CoronaApp.Api.Controllers
 
         [AllowAnonymous]
         [HttpGet("{id}/{password}/{name}")]
-        public Patient Get([Range(100000000,999999999)] int id, int password, string name)
+        public  Patient Get([Range(100000000,999999999)] int id, int password, string name)
         {
             //return PatientService.Get(new Patient() { Id = id, Age = age });
             return PatientService.Authenticate(id, password, name);
         }
          
-        [AllowAnonymous]
-        [HttpGet("Authenticate/{id}/{password}")]
-        
+        //[AllowAnonymous]
+        //[HttpGet("Authenticate/{id}/{password}")]
+
         //public JwtSecurityToken Authenticate(int id,int password)
         //{
         //    return PatientService.Authenticate(id,password);
         //}
         // POST api/<PatientController>
+
+        [AllowAnonymous]
         [HttpPost]
         public void Post([FromBody] Patient value)
         {
-            
             PatientService.Save(value);
         }
 
         // PUT api/<PatientController>/5
-        [HttpPut("{id}")]
-        public Object Put(int id, [FromBody] Location location)
+        [HttpPut("{token}")]
+        public Object Put(string token, [FromBody] Location location)
         {
-            return PatientService.Add(id, location);
+            
+            //var stream = "[encoded jwt]"; 
+            var handler = new JwtSecurityTokenHandler(); 
+            var jsonToken = handler.ReadToken(token);
+            var tokenS = handler.ReadToken(token) as JwtSecurityToken;
+           
+            var jti = tokenS.Claims.First(claim => claim.Type == "role"). Value;
+            return PatientService.Add(Int32.Parse(jti), location);
         }
 
-        [HttpDelete("{id}")]
-        public void Delete(int id, [FromBody] string location)
+        [HttpDelete("{token}")]
+        public void Delete(string token, [FromBody] string location)
         {
-            PatientService.Delete(id, int.Parse(location));
+
+            var handler = new JwtSecurityTokenHandler();
+            var jsonToken = handler.ReadToken(token);
+            var tokenS = handler.ReadToken(token) as JwtSecurityToken;
+            var jti = tokenS.Claims.First(claim => claim.Type == "role").Value;
+            PatientService.Delete(Int32.Parse(jti), int.Parse(location));
 
         }
 

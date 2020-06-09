@@ -39,7 +39,7 @@ namespace CoronaApp.Services
         }
         public Patient Authenticate(int id, int password, string name)
         {
-            return PatientRepository.Get(new Patient { Id = id, Name = name, Password = password });
+            return PatientRepository.Get(new Patient { Id = id, PatientName = name, PasswordPatient = password });
             //if (id == Id && password == Password)
             //{
             //    var tokenHandler = new JwtSecurityTokenHandler();

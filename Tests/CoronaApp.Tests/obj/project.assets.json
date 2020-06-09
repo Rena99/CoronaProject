@@ -3583,6 +3583,7 @@
           "Microsoft.AspNetCore.StaticFiles": "2.2.0",
           "Microsoft.EntityFrameworkCore": "3.1.4",
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.4",
+          "Microsoft.IdentityModel.Tokens": "6.6.0",
           "Octokit": "0.47.0",
           "Octokit.Caching": "1.0.6",
           "Octokit.Extensions": "1.0.7",
@@ -3591,6 +3592,7 @@
           "Serilog.AspNetCore": "3.2.0",
           "Serilog.Settings.Configuration": "3.1.0",
           "Serilog.Sinks.MSSqlServer": "5.4.0",
+          "System.IdentityModel.Tokens.Jwt": "6.6.0",
           "jose-jwt": "2.5.0"
         },
         "compile": {
@@ -10996,19 +10998,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\rina lerner\\.nuget\\packages\\": {}
+    "C:\\Users\\RLemberger\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rina lerner\\Documents\\Brix\\AuthProject\\CoronaProject\\Tests\\CoronaApp.Tests\\CoronaApp.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\RLemberger\\Documents\\Brix\\Rina&Rachelly\\CoronaProject\\Tests\\CoronaApp.Tests\\CoronaApp.Tests.csproj",
       "projectName": "CoronaApp.Tests",
-      "projectPath": "C:\\Users\\rina lerner\\Documents\\Brix\\AuthProject\\CoronaProject\\Tests\\CoronaApp.Tests\\CoronaApp.Tests.csproj",
-      "packagesPath": "C:\\Users\\rina lerner\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\rina lerner\\Documents\\Brix\\AuthProject\\CoronaProject\\Tests\\CoronaApp.Tests\\obj\\",
+      "projectPath": "C:\\Users\\RLemberger\\Documents\\Brix\\Rina&Rachelly\\CoronaProject\\Tests\\CoronaApp.Tests\\CoronaApp.Tests.csproj",
+      "packagesPath": "C:\\Users\\RLemberger\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\RLemberger\\Documents\\Brix\\Rina&Rachelly\\CoronaProject\\Tests\\CoronaApp.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\rina lerner\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\RLemberger\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -11021,8 +11023,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\rina lerner\\Documents\\Brix\\AuthProject\\CoronaProject\\Src\\CoronaApp.Application\\CoronaApp.Api.csproj": {
-              "projectPath": "C:\\Users\\rina lerner\\Documents\\Brix\\AuthProject\\CoronaProject\\Src\\CoronaApp.Application\\CoronaApp.Api.csproj"
+            "C:\\Users\\RLemberger\\Documents\\Brix\\Rina&Rachelly\\CoronaProject\\Src\\CoronaApp.Application\\CoronaApp.Api.csproj": {
+              "projectPath": "C:\\Users\\RLemberger\\Documents\\Brix\\Rina&Rachelly\\CoronaProject\\Src\\CoronaApp.Application\\CoronaApp.Api.csproj"
             }
           }
         }

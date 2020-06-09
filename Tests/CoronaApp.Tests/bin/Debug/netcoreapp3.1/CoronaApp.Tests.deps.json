@@ -348,6 +348,27 @@
           "lib/net45/Glimpse.Mvc5.dll": {}
         }
       },
+      "jose-jwt/2.5.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.3",
+          "System.IO.Compression": "4.3.0",
+          "System.Runtime.InteropServices": "4.3.0",
+          "System.Runtime.Serialization.Primitives": "4.3.0",
+          "System.Security.Cryptography.Algorithms": "4.3.0",
+          "System.Security.Cryptography.Cng": "4.5.0",
+          "System.Security.Cryptography.Csp": "4.3.0",
+          "System.Security.Cryptography.X509Certificates": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard1.4/jose-jwt.dll": {
+            "assemblyVersion": "2.4.0.0",
+            "fileVersion": "2.4.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard1.4/jose-jwt.dll": {}
+        }
+      },
       "Lucene.Net/3.0.3": {
         "dependencies": {
           "SharpZipLib": "0.86.0"
@@ -3027,7 +3048,8 @@
           "ScriptCs.Octokit": "0.5.10",
           "Serilog.AspNetCore": "3.2.0",
           "Serilog.Settings.Configuration": "3.1.0",
-          "Serilog.Sinks.MSSqlServer": "5.4.0"
+          "Serilog.Sinks.MSSqlServer": "5.4.0",
+          "jose-jwt": "2.5.0"
         },
         "runtime": {
           "CoronaApp.Api.dll": {}
@@ -4568,6 +4590,13 @@
       "sha512": "sha512-CRSTu7iqsZy5sw4z65SrJVq5YjDlGsdaAiDvMx4/iCYnCA4+HLttiF4A0/xAVWtJFcLMsKPgOMxu1PKNJzjezw==",
       "path": "glimpse.mvc5/1.5.3",
       "hashPath": "glimpse.mvc5.1.5.3.nupkg.sha512"
+    },
+    "jose-jwt/2.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-w3CMPl5CPDZaPfkcDvlgs61FXdgAs9c9R/CvfYXtYEM+I6ceFT2BhlVC76zMqZZdpgj8Nw/ShnqndFXZoqO9Fw==",
+      "path": "jose-jwt/2.5.0",
+      "hashPath": "jose-jwt.2.5.0.nupkg.sha512"
     },
     "Lucene.Net/3.0.3": {
       "type": "package",
