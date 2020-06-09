@@ -46,9 +46,9 @@ namespace CoronaApp.Api.Controllers
         }
         [HttpGet]
         [Route("{action}")]
-        public IEnumerable<Location> Get([FromQuery] LocationSearch locationSearch=null)
+        public async Task<IEnumerable<Location>> Get([FromQuery] LocationSearch locationSearch=null)
         {
-            var listDemo = (List<Location>)locationService.Get(locationSearch);
+            var listDemo = await locationService.Get(locationSearch);
             return listDemo;
         }
     }

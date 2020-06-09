@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace CoronaApp.Services
 {
@@ -12,9 +13,9 @@ namespace CoronaApp.Services
             ILocationRepository = locationRepository;
         }
 
-        public ICollection<Location> Get(LocationSearch locationSearch)
+        public async Task<List<Location>> Get(LocationSearch locationSearch)
         {
-            return ILocationRepository.SearchBy(locationSearch);
+            return await ILocationRepository.SearchBy(locationSearch);
         }
 
         public ICollection<Location> GetAllList(List<Location> locations)

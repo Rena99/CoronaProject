@@ -11,7 +11,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
-
+using System.Threading.Tasks;
 
 namespace CoronaApp.Dal
 {
@@ -26,9 +26,9 @@ namespace CoronaApp.Dal
         }
 
 
-        public Location Add(int id, Location location)
+        public async Task<Location> Add(int id, Location location)
         {
-            Patient p = context.Patient.Include(p => p.Path).FirstOrDefault(p => p.Id == id);
+            Patient p = await context.Patient.Include(p => p.Path).FirstOrDefaultAsync(p => p.Id == id);
             if (p != null)
             {
                 p.Path.Add(location);
@@ -37,9 +37,9 @@ namespace CoronaApp.Dal
             return p.Path.Last();
         }
 
-        public void Delete(int id, int location)
+        public async void Delete(int id, int location)
         {
-            Patient p = context.Patient.Include(p => p.Path).FirstOrDefault(p => p.Id == id);
+            Patient p = await context.Patient.Include(p => p.Path).FirstOrDefaultAsync(p => p.Id == id);
             if (p != null)
             {
                 Location l = p.Path.FirstOrDefault(p => p.Id == location);
@@ -48,9 +48,9 @@ namespace CoronaApp.Dal
             context.SaveChanges();
         }
 
-        public Patient Get(Patient patient)
+        public async Task<Patient> Get(Patient patient)
         {
-            var user = context.Patient.Include(p=>p.Path).SingleOrDefault(x => x.Id == patient.Id 
+            var user = await context.Patient.Include(p=>p.Path).SingleOrDefaultAsync(x => x.Id == patient.Id 
             && x.PasswordPatient == patient.PasswordPatient);
             if (user == null)
                 return null;

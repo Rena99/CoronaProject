@@ -26,10 +26,10 @@ namespace CoronaApp.Api.Controllers
 
         [AllowAnonymous]
         [HttpGet("{id}/{password}/{name}")]
-        public  Patient Get([Range(100000000,999999999)] int id, int password, string name)
+        public async Task<Patient> Get([Range(100000000,999999999)] int id, int password, string name)
         {
             //return PatientService.Get(new Patient() { Id = id, Age = age });
-            return PatientService.Authenticate(id, password, name);
+            return await PatientService.Authenticate(id, password, name);
         }
          
         //[AllowAnonymous]
@@ -50,7 +50,7 @@ namespace CoronaApp.Api.Controllers
 
         // PUT api/<PatientController>/5
         [HttpPut("{token}")]
-        public Object Put(string token, [FromBody] Location location)
+        public async Task<Object> Put(string token, [FromBody] Location location)
         {
             
             //var stream = "[encoded jwt]"; 
@@ -59,7 +59,7 @@ namespace CoronaApp.Api.Controllers
             var tokenS = handler.ReadToken(token) as JwtSecurityToken;
            
             var jti = tokenS.Claims.First(claim => claim.Type == "role"). Value;
-            return PatientService.Add(Int32.Parse(jti), location);
+            return await PatientService.Add(Int32.Parse(jti), location);
         }
 
         [HttpDelete("{token}")]

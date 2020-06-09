@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace CoronaApp.Services
 {
@@ -19,27 +20,27 @@ namespace CoronaApp.Services
         {
             PatientRepository = patientRepository;
         }
-        public Location Add(int id, Location location)
+        public async Task<Location> Add(int id, Location location)
         {
-            return PatientRepository.Add(id, location);
+            return await PatientRepository.Add(id, location);
         }
         public void Delete(int id, int location)
         {
             PatientRepository.Delete(id, location);
         }
 
-        public Patient Get(Patient patient)
+        public async Task<Patient> Get(Patient patient)
         {
-            return PatientRepository.Get(patient);
+            return await PatientRepository.Get(patient);
         }
 
         public void Save(Patient patient)
         {
             PatientRepository.Save(patient);
         }
-        public Patient Authenticate(int id, int password, string name)
+        public async Task<Patient> Authenticate(int id, int password, string name)
         {
-            return PatientRepository.Get(new Patient { Id = id, PatientName = name, PasswordPatient = password });
+            return await PatientRepository.Get(new Patient { Id = id, PatientName = name, PasswordPatient = password });
             //if (id == Id && password == Password)
             //{
             //    var tokenHandler = new JwtSecurityTokenHandler();

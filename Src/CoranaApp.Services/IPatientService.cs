@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace CoronaApp.Services
 {
     public interface IPatientService
     {
-        Patient Authenticate(int id, int password, string name);
-        Patient Get(Patient patient);
+        Task<Patient> Authenticate(int id, int password, string name);
+        Task<Patient> Get(Patient patient);
 
         void Save(Patient patient);
 
-        Location Add(int id, Location location);
+        Task<Location> Add(int id, Location location);
 
         void Delete(int id, int location);
     }

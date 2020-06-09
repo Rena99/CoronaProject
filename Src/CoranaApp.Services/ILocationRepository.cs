@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace CoronaApp.Services
 {
     public interface ILocationRepository
     {
-        ICollection<Location> SearchByCity(LocationSearch locationSearch);
+        Task<List<Location>> SearchByCity(LocationSearch locationSearch);
         ICollection<Location> GetAllList(List<Location> locations);
-        ICollection<Location> SearchByDate(LocationSearch locationSearch);
-        ICollection<Location> SearchBy(LocationSearch locationSearch);
-        ICollection<Location> SearchByAllParams(LocationSearch locationSearch);
+        List<Location> SearchByDate(LocationSearch locationSearch);
+        Task<List<Location>> SearchBy(LocationSearch locationSearch);
+        Task<ICollection<Location>> SearchByAllParams(LocationSearch locationSearch);
 
     }
 }

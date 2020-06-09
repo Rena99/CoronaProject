@@ -47,6 +47,7 @@
           "Serilog.AspNetCore": "3.2.0",
           "Serilog.Settings.Configuration": "3.1.0",
           "Serilog.Sinks.MSSqlServer": "5.4.0",
+          "System.IdentityModel.Tokens.Jwt": "6.6.0",
           "jose-jwt": "2.5.0",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions.Reference": "3.1.0.0",

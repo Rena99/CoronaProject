@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using CoronaApp.Dal;
 using CoronaApp.Services;
 using Microsoft.EntityFrameworkCore;
@@ -37,7 +38,7 @@ namespace CoronaApp.Dal
             return listPatient;
         }
 
-        public ICollection<Location> SearchBy(LocationSearch locationSearch)
+        public async Task<List<Location>> SearchBy(LocationSearch locationSearch)
         {
             var searchList = new List<Location>();
             //if (locationSearch.City != null)
@@ -46,25 +47,24 @@ namespace CoronaApp.Dal
             //}
             if (locationSearch.City == null)
             {
-                searchList = (List<Location>)SearchByDate(locationSearch);
+                searchList = SearchByDate(locationSearch);
             }
             else
             {
-                searchList = (List<Location>)SearchByCity(locationSearch);
+                searchList = await SearchByCity(locationSearch);
             }
 
             return searchList;
         }
-        public ICollection<Location> SearchByCity(LocationSearch locationSearch)
+        public async Task<List<Location>> SearchByCity(LocationSearch locationSearch)
         {
            // CoronaContext context = new CoronaContext();
-            var listOfSpecificCity = context.Location.Where(l => l.City == locationSearch.City).ToList();
+            var listOfSpecificCity = await context.Location.Where(l => l.City == locationSearch.City).ToListAsync();
             return listOfSpecificCity;
         }
-        public ICollection<Location> SearchByDate(LocationSearch locationSearch)
+        public List<Location> SearchByDate(LocationSearch locationSearch)
         {
             var listPatient = new List<Location>();
-           // CoronaContext context = new CoronaContext();
             foreach (var item in context.Patient.Include(x => x.Path))
             {
                 foreach (var item2 in item.Path)
@@ -82,12 +82,11 @@ namespace CoronaApp.Dal
         }
 
 
-        public ICollection<Location> SearchByAllParams(LocationSearch locationSearch)
+        public async Task<ICollection<Location>> SearchByAllParams(LocationSearch locationSearch)
         {
-            CoronaContext context = new CoronaContext();
-            var listPatient = context.Location.Where(l => l.City == locationSearch.City&&
+            var listPatient = await context.Location.Where(l => l.City == locationSearch.City&&
             l.StartDate > locationSearch.StartDate &&
-                l.EndDate < locationSearch.EndDate).ToList();
+                l.EndDate < locationSearch.EndDate).ToListAsync();
             return listPatient;
         }
     }
