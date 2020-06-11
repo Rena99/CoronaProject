@@ -20,15 +20,11 @@ namespace CoronaApp.Services
 
         public DbSet<Location> Location { get; set; }
         public DbSet<Patient> Patient { get; set; }
-        //public DbSet<Log> Log { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseSqlServer("Server=ILRLEMBERGERLT; Database= CoronaDB; Trusted_Connection = True;");
-                //optionsBuilder.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\RLemberger\\Documents\\Brix\\Rina&Rachelly\\CoronaProject\\DB\\CoronaDB.mdf;Integrated Security=True;Connect Timeout=30");
-                //optionsBuilder.UseSqlServer(@"Data Source=(LocalDB)\PersonCorona; AttachDbFilename=C:\Users\RLemberger\Documents\Brix\Rina&Rachelly\CoronaProject\DB\CoronaDB.mdf; Integrated Security=True; Connect Timeout=30");
-                //optionsBuilder.UseSqlServer(@"Server=ILRLEMBERGERLT;Database=PersonCorona;Trusted_Connection=true;");
             }
         }
 

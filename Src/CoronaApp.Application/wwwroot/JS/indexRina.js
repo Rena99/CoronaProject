@@ -29,10 +29,9 @@ const locationOfPath = document.getElementById('location');
 //const patientAge = document.getElementById('patientAge');
 const patientsName = document.getElementById('patientName');
 const deleted = document.getElementsByClassName('deleted');
-//const getToken = document.getElementById('getToken');
 const oReq = new XMLHttpRequest();
 const urlPath = "https://localhost:44381/patient";
-let token = '';
+let cookie = document.cookie;
 
 let changeHTML = function changeHTMLAttributes(patient) {
     PasswordPatient.style.display = 'none';
@@ -72,10 +71,9 @@ let AddNewPatient = function AddNewPatientToDB(patient) {
         console.log(e);
     });
 
-    oReq.open("POST", url/*+ '?access_token=' + encodeURIComponent(token)*/, true);
+    oReq.open("POST", url, true);
     let jsonString = JSON.stringify(patient);
     oReq.setRequestHeader("Content-Type", "application/json");
-   // oReq.setRequestHeader("Authorization", token);
     oReq.send(jsonString);
 }
 
@@ -99,6 +97,10 @@ let getTokenFunction = function getNewToken(id,password) {
     oReq.open("Get", url+ '?access_token=' + encodeURIComponent(token), true);
     oReq.send();
 };
+
+let setCookie=function setNewCookie(token) {
+    document.cookie = "token=" + token +";";
+}
 
 let addPatient = function addAPatient(patientID, patientPassword, patientName) {
     patient.password = 0;
@@ -132,7 +134,7 @@ let addPatient = function addAPatient(patientID, patientPassword, patientName) {
             if (result.id === 0) {
                 hide = true;
             }
-            token = result.token;
+            setCookie(result.token);
             for (let i = 0; i < result.path.length; i++) {
                 addPath(result.path[i], hide);
             }
@@ -140,11 +142,8 @@ let addPatient = function addAPatient(patientID, patientPassword, patientName) {
         reject => AddNewPatient(patient)
     );
     oReq.open("Get", url, true);
-    //oReq.Headers.Add("Authorization", "Bearer " + token);
-    //oReq.setRequestHeader("Authorization", token);
     oReq.send();
     changeHTML(patient);
-   
 };
 
 let deleteInput = function deleteInputItems() {
@@ -250,7 +249,7 @@ let DeletePaths = function savePathsOfPatient(id) {
     );
     oReq.open("DELETE", urlPath + "/" + token, true);
     oReq.setRequestHeader("Content-Type", "application/json");
-    oReq.setRequestHeader("Authorization", "Bearer "+token);
+    oReq.setRequestHeader("Authorization", "Bearer " + cookie);
 
     let jsonString = JSON.stringify(id);
     console.log(jsonString);
@@ -276,10 +275,10 @@ let addPathObject = function addANewObjectToPatientPathArray(path) {
     let b = url + '?access_token=' + encodeURIComponent(token);
     oReq.open("PUT", urlPath +"/"+ token, true);
     oReq.setRequestHeader("Content-Type", "application/json");
-    oReq.setRequestHeader("Authorization", "Bearer "+token);
+    var lengthOfToken = cookie["token="].length;
+    oReq.setRequestHeader("Authorization", "Bearer " + cookie["token="].substring(lengthOfToken-2));
     
-
-
+  
     let jsonString = JSON.stringify(path);
     console.log(jsonString);
     oReq.send(jsonString);
@@ -304,22 +303,6 @@ let removeDataTable = function removeDataTableFromDisplay() {
     }
 };
 
-//getToken.addEventListener('click', function () {
-//    if (patientID.value === '' || PasswordPatient.value === '') {
-//        alert("no id and password inputed");
-//    }
-//    else {
-//        getTokenFunction(patientID.value, PasswordPatient.value);
-//        getToken.style.display = 'none';
-//        newPatient.style.display = 'inline';
-//        patientID.value = '';
-//        patientID.style.display = 'inline';
-//        patientAge.style.display = 'inline';
-//        patientsName.style.display = 'inline';
-//        PasswordPatient.style.display = 'none';
-
-//    }
-//});
 newPatient.addEventListener('click', function () {
     addPatient(patientID.value, PasswordPatient.value, patientsName.value);
 });

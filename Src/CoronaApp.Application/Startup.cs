@@ -25,6 +25,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Reflection;
 using System.IO;
+using Microsoft.OpenApi.Models;
 
 namespace CoronaApp.Api
 {
@@ -48,122 +49,128 @@ namespace CoronaApp.Api
             services.AddScoped<IPatientRepository, PatientRepository>();
             services.AddScoped<ILocationService, LocationService>();
             services.AddScoped<IPatientService, PatientService>();
-            //services.AddMvc(options =>
-            //{
-            //    options.Filters.Add(new AuthorizationFilter());
-            //    options.Filters.Add(new ErrorHandlingFilter());
-            //});
-
+         
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
-            // services.AddCors();
             var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
             services.AddSwaggerGen(setupAction =>
             {
-                setupAction.SwaggerDoc("CoroanAPI",new Microsoft.OpenApi.Models.OpenApiInfo()
+                setupAction.SwaggerDoc("CoroanAPI", new Microsoft.OpenApi.Models.OpenApiInfo()
                 {
-                Description="CoronaAPI add swagger",
-                Title="Corona",
-                Version="1"
+                    Description = "CoronaAPI add swagger",
+                    Title = "Corona",
+                    Version = "1"
                 });
 
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 setupAction.IncludeXmlComments(xmlPath);
-               
-            });
 
-            
-
-            // configure jwt authentication
-            var appSettings = appSettingsSection.Get<AppSettings>();
-            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
-            services.AddAuthentication(x =>
-            {
-                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                x.DefaultSignInScheme = JwtBearerDefaults.AuthenticationScheme;
-                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-            .AddJwtBearer(x =>
-            {
-                x.RequireHttpsMetadata = false;
-                x.SaveToken = true;
-                x.TokenValidationParameters = new TokenValidationParameters
+                setupAction.AddSecurityDefinition("basic auth", new Microsoft.OpenApi.Models.OpenApiSecurityScheme()
                 {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(key),
-                    ValidateIssuer = false,
-                    ValidateAudience = false
-                };
-            });
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "basic",
+                    Description = "input your user name and password to access this scheme"
+                });
+                setupAction.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "basic auth"
+                            }
+                        },
+                        new List<string>()
+                    }
+                });
 
+
+
+                // configure jwt authentication
+                var appSettings = appSettingsSection.Get<AppSettings>();
+                var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+                services.AddAuthentication(x =>
+                {
+                    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    x.DefaultSignInScheme = JwtBearerDefaults.AuthenticationScheme;
+                    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                })
+                .AddJwtBearer(x =>
+                {
+                    x.RequireHttpsMetadata = false;
+                    x.SaveToken = true;
+                    x.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(key),
+                        ValidateIssuer = false,
+                        ValidateAudience = false
+                    };
+                });
+
+            });
         }
 
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        {
-
-            if (env.IsDevelopment())
+            // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
             {
-                app.UseDeveloperExceptionPage();
+
+                if (env.IsDevelopment())
+                {
+                    app.UseDeveloperExceptionPage();
+                }
+                else
+                {
+                    app.UseHsts();
+                }
+
+                app.UseHttpsRedirection();
+
+                app.UseSwagger();
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/CoroanAPI/swagger.json", "Corona");
+                });
+
+
+                app.UseMiddleware<ValedationMiddleware>();
+
+                app.UseRouting();
+
+                app.UseCors(x => x
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
+
+
+
+                app.UseAuthentication();
+                app.UseAuthorization();
+
+
+                app.UseStaticFiles();
+
+                app.UseAuthorization();
+              
+                app.UseEndpoints(endpoints =>
+                {
+                    endpoints.MapControllers();
+                
+            });
+
+                app.UseCookiePolicy(new CookiePolicyOptions
+                {
+                    MinimumSameSitePolicy = SameSiteMode.Strict,
+                    HttpOnly = HttpOnlyPolicy.Always,
+                    Secure = CookieSecurePolicy.Always
+                });
+
+
             }
-            else
-            {
-                //app.UseExceptionHandler();
-                app.UseHsts();
-            }
-
-            app.UseHttpsRedirection();
-
-            app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/CoroanAPI/swagger.json", "Corona");
-            });
-
-
-            app.UseMiddleware<ValedationMiddleware>();
-
-            app.UseRouting();
-
-            app.UseCors(x => x
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader());
-
-
-
-            app.UseAuthentication();
-            app.UseAuthorization();
-
-
-            app.UseStaticFiles();
-
-            app.UseAuthorization();
-            //app.UseExceptionHandler();
-
-            //app.UseNodeModules(env);
-
-            //app.UseMvc();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-              //  endpoints.MapRazorPages();
-            });
-            //  app.UseStatusCodePagesWithReExecute("/Errors/{0}"); 
-
-            app.UseCookiePolicy(new CookiePolicyOptions
-            {
-                MinimumSameSitePolicy = SameSiteMode.Strict,
-                HttpOnly = HttpOnlyPolicy.Always,
-                Secure = CookieSecurePolicy.Always
-            });
-
-
-        }
-
 
     }
 }

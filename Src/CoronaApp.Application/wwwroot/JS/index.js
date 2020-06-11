@@ -42,21 +42,8 @@ function styleTable(table) {
 function createTable(locationsList) {
     if (locationsList.length > 0) {
         var b = document.getElementsByTagName("body")[0];
-        //   var table = document.createElement("table");
         var table = document.getElementById("table");
-        // styleTable(table);
         var col = [];
-        //var numberOfProperties = Object.keys(locationsList[0].).length;
-        //var numberOfProperties = 5;
-        //var tHead = document.createElement("thead");
-        //var hRow = document.createElement("tr");
-        //for (let j = 0; j < numberOfProperties; j++) {
-        //    var th = document.createElement("th");
-        //    th.innerHTML = listNamesForColumns[j].charAt(0).toUpperCase() + listNamesForColumns[j].slice(1);
-        //    hRow.appendChild(th);
-        //}
-        //tHead.appendChild(hRow);
-        //table.appendChild(tHead);
         var index = 0;
         var tBody = document.createElement("tbody");
         tBody.setAttribute("id", "tBodyId")
@@ -97,14 +84,11 @@ var searchLocation = {
 const buttonSearch = document.getElementById('Search-City');
 const sortDate = document.getElementById("sortDate");
 const inputSearch = document.getElementById('nameOfCity');
-//const StartDate= document.getElementById("StartDate");
-//const EndDate = document.getElementById("EndDate");
 const buttonSearchDate = document.getElementById("SearchDate");
 const BASICURL = "https://localhost:44381/api/";
 const refresh = document.getElementById('refresh');
 
 buttonSearchDate.addEventListener("click", function () {
-    //document.getElementById("table").remove();
     let lenghtTable = document.getElementById("table").rows.length;
     for (var i = 0, x = 2; i < lenghtTable - 2; i++) {
         document.getElementById("table").deleteRow(x);
@@ -183,39 +167,5 @@ sortDate.addEventListener("click", function () {
     });
 
 })
-
-//convert Date
-//function convertDate(d) {
-//    var p = d.split("-");
-//    reverseString(p);
-//    return +(p[2] + p[1] + p[0]);
-//}
-
-//Sort a table By Date
-//function sortByDate() {
-    //var tbody = document.querySelector("#table tbody");
-    //// get trs as array for ease of use
-    //var rows = [].slice.call(tbody.querySelectorAll("tr"));
-    //rows.sort(function (a, b) {
-    //    return convertDate(a.cells[2].innerHTML) - convertDate(b.cells[2].innerHTML);
-    //});
-    //rows.forEach(function (v) {
-    //    tbody.appendChild(v); // note that .appendChild() *moves* elements
-    //});
-
-//}
-//document.querySelector("button").addEventListener("click", sortByDate);
-//document.getElementById("sortById").addEventListener("click", sortByDate);
-
-//function reverseString(str) {
-//    var arry = [];
-//    for (var i = 0, j = str.length; i < str.length; j--, i++) {
-//        arry[j] = str[i];
-//    }
-//    console.log(arry);
-
-//    return arry;
-//}
-
 
 

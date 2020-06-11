@@ -69,14 +69,6 @@ namespace CoronaApp.Api.Controllers
             return await PatientService.Get(new Patient() { Id = id, PasswordPatient = password, PatientName = name });
         }
 
-        //[AllowAnonymous]
-        //[HttpGet("Authenticate/{id}/{password}")]
-
-        //public JwtSecurityToken Authenticate(int id,int password)
-        //{
-        //    return PatientService.Authenticate(id,password);
-        //}
-
         /// <summary>
         /// Add patient
         /// </summary>

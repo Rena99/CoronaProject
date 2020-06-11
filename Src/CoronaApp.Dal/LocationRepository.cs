@@ -43,10 +43,6 @@ namespace CoronaApp.Dal
         public async Task<List<Location>> SearchBy(LocationSearch locationSearch)
         {
             var searchList = new List<Location>();
-            //if (locationSearch.City != null)
-            //{
-            //    searchList = (List<Location>)SearchByDate(locationSearch);
-            //}
             if (locationSearch.City == null)
             {
                 searchList = SearchByDate(locationSearch);
@@ -70,15 +66,12 @@ namespace CoronaApp.Dal
             {
                 foreach (var item2 in item.Path)
                 {
-                    if (item2.StartDate > locationSearch.StartDate /*&& item2.EndDate<locationSearch.EndDate*/ )
+                    if (item2.StartDate > locationSearch.StartDate)
                     {
                         listPatient.Add(item2);
                     }
                 }
-            }
-            //var listPatient = context.Location
-            //    .Where(l => l.StartDate > locationSearch.StartDate &&
-            //    l.EndDate < locationSearch.EndDate).ToList();
+            }          
             return listPatient;
         }
 
