@@ -6288,19 +6288,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\rina lerner\\.nuget\\packages\\": {}
+    "C:\\Users\\RLemberger\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rina lerner\\Documents\\Brix\\AuthProject\\CoronaProject\\Src\\CoranaApp.Services\\CoronaApp.Services.csproj",
+      "projectUniqueName": "C:\\Users\\RLemberger\\Documents\\Brix\\Rina&Rachelly\\CoronaProject\\Src\\CoranaApp.Services\\CoronaApp.Services.csproj",
       "projectName": "CoronaApp.Services",
-      "projectPath": "C:\\Users\\rina lerner\\Documents\\Brix\\AuthProject\\CoronaProject\\Src\\CoranaApp.Services\\CoronaApp.Services.csproj",
-      "packagesPath": "C:\\Users\\rina lerner\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\rina lerner\\Documents\\Brix\\AuthProject\\CoronaProject\\Src\\CoranaApp.Services\\obj\\",
+      "projectPath": "C:\\Users\\RLemberger\\Documents\\Brix\\Rina&Rachelly\\CoronaProject\\Src\\CoranaApp.Services\\CoronaApp.Services.csproj",
+      "packagesPath": "C:\\Users\\RLemberger\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\RLemberger\\Documents\\Brix\\Rina&Rachelly\\CoronaProject\\Src\\CoranaApp.Services\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\rina lerner\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\RLemberger\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

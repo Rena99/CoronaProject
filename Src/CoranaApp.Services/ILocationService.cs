@@ -7,7 +7,7 @@ namespace CoronaApp.Services
 {
     public interface ILocationService
     {
-        ICollection<Location> GetAllList(List<Location> locations);
+        List<Location> GetAllList();
         Task<List<Location>> Get(LocationSearch locationSearch);
             
     }

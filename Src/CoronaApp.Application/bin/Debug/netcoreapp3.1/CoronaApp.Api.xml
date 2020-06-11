@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CoronaApp.Api</name>
+    </assembly>
+    <members>
+        <member name="M:CoronaApp.Api.Controllers.LocationController.GetAllList">
+            <summary>
+            Gets list patient when page is loaded 
+            </summary>
+            <returns> List Patient</returns>
+        </member>
+        <member name="M:CoronaApp.Api.Controllers.LocationController.Get(CoronaApp.Services.LocationSearch)">
+            <summary>
+            Gets list of patients according to search query
+            </summary>
+            <returns>Filtered list of Patient</returns>
+        </member>
+        <member name="M:CoronaApp.Api.Controllers.PatientController.Get(System.Int32,System.Int32,System.String)">
+            <summary>
+            Gets patient
+            </summary>
+            <param name="id">Patient id</param>
+            <param name="name">Patient name</param>
+            <param name="password">Patient password</param>
+            <returns> Specific Patient</returns>
+        </member>
+        <member name="M:CoronaApp.Api.Controllers.PatientController.Post(CoronaApp.Services.Patient)">
+             <summary>
+             Add patient
+             </summary>
+            <param name="value">Patient to add</param>
+        </member>
+        <member name="M:CoronaApp.Api.Controllers.PatientController.Put(System.String,CoronaApp.Services.Location)">
+            <summary>
+            Add location to patient
+            </summary>
+            <param name="token">Authenticate</param>
+            <param name="location">location to add</param>
+            <returns> List Patient</returns>
+        </member>
+        <member name="M:CoronaApp.Api.Controllers.PatientController.Delete(System.String,System.String)">
+            <summary>
+            Delete patient
+            </summary>
+            <param name="token">Authenticate</param>
+            <param name="location">location to add</param>
+        </member>
+    </members>
+</doc>

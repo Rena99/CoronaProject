@@ -13,37 +13,35 @@ namespace CoronaApp.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public class LocationController : ControllerBase
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     {
-        //public ILocationRepository ILocationRepository;
-        //public LocationController(ILocationRepository locationRepository)
-        //{
-        //    ILocationRepository = locationRepository;
-        //}
+       
         private readonly ILocationService locationService;
-            public LocationController(ILocationService locationService)
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+        public LocationController(ILocationService locationService)
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
         {
             this.locationService = locationService;
         }
+        /// <summary>
+        /// Gets list patient when page is loaded 
+        /// </summary>
+        /// <returns> List Patient</returns>
+
         // GET: api/<LocationController>
-       [HttpGet]
-       [Route("{action}")]
+        [HttpGet]
         public IActionResult GetAllList()
         {
-            var listPatient = new List<Location>();
-            ICollection<Location> a;
-            //try
-            //{
-
-            listPatient = (List<Location>)locationService.GetAllList(listPatient);
-            //}
-            //catch (Exception e)
-            //{
-
-            //    throw;
-            //}
+            var listPatient = locationService.GetAllList();
             return Ok(listPatient);
         }
+        /// <summary>
+        /// Gets list of patients according to search query
+        /// </summary>
+        /// <returns>Filtered list of Patient</returns>
         [HttpGet]
         [Route("{action}")]
         public async Task<IEnumerable<Location>> Get([FromQuery] LocationSearch locationSearch=null)

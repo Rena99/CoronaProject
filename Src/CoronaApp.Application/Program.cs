@@ -12,6 +12,8 @@ using Serilog;
 
 namespace CoronaApp.Api
 {
+
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public class Program
     {
         public static IConfiguration Configuration { get; } = new ConfigurationBuilder()
@@ -37,6 +39,7 @@ namespace CoronaApp.Api
             }
         }
         public static IWebHost BuildWebHost(string[] args) =>
+
             WebHost.CreateDefaultBuilder(args)
                    .UseStartup<Startup>()
                    .UseConfiguration(Configuration)
@@ -44,3 +47,4 @@ namespace CoronaApp.Api
                    .Build();
     }
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

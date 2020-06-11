@@ -20,9 +20,16 @@ using CoronaApp.Services.Helpers;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.CookiePolicy;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using System.Reflection;
+using System.IO;
 
 namespace CoronaApp.Api
 {
+
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -35,7 +42,7 @@ namespace CoronaApp.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddDbContext<CoronaContext>(options => 
+            services.AddDbContext<CoronaContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("CoronaContext")));
             services.AddScoped<ILocationRepository, LocationRepository>();
             services.AddScoped<IPatientRepository, PatientRepository>();
@@ -46,8 +53,27 @@ namespace CoronaApp.Api
             //    options.Filters.Add(new AuthorizationFilter());
             //    options.Filters.Add(new ErrorHandlingFilter());
             //});
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
+            // services.AddCors();
             var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
+            services.AddSwaggerGen(setupAction =>
+            {
+                setupAction.SwaggerDoc("CoroanAPI",new Microsoft.OpenApi.Models.OpenApiInfo()
+                {
+                Description="CoronaAPI add swagger",
+                Title="Corona",
+                Version="1"
+                });
+
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                setupAction.IncludeXmlComments(xmlPath);
+               
+            });
+
+            
 
             // configure jwt authentication
             var appSettings = appSettingsSection.Get<AppSettings>();
@@ -55,6 +81,7 @@ namespace CoronaApp.Api
             services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultSignInScheme = JwtBearerDefaults.AuthenticationScheme;
                 x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             })
             .AddJwtBearer(x =>
@@ -76,7 +103,7 @@ namespace CoronaApp.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-           
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -88,6 +115,14 @@ namespace CoronaApp.Api
             }
 
             app.UseHttpsRedirection();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/CoroanAPI/swagger.json", "Corona");
+            });
+
+
             app.UseMiddleware<ValedationMiddleware>();
 
             app.UseRouting();
@@ -96,6 +131,8 @@ namespace CoronaApp.Api
                 .AllowAnyOrigin()
                 .AllowAnyMethod()
                 .AllowAnyHeader());
+
+
 
             app.UseAuthentication();
             app.UseAuthorization();
@@ -113,13 +150,21 @@ namespace CoronaApp.Api
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+              //  endpoints.MapRazorPages();
             });
-          //  app.UseStatusCodePagesWithReExecute("/Errors/{0}"); 
-            
-            
-       
+            //  app.UseStatusCodePagesWithReExecute("/Errors/{0}"); 
+
+            app.UseCookiePolicy(new CookiePolicyOptions
+            {
+                MinimumSameSitePolicy = SameSiteMode.Strict,
+                HttpOnly = HttpOnlyPolicy.Always,
+                Secure = CookieSecurePolicy.Always
+            });
+
+
         }
 
 
     }
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

@@ -18,9 +18,9 @@ namespace CoronaApp.Services
             return await ILocationRepository.SearchBy(locationSearch);
         }
 
-        public ICollection<Location> GetAllList(List<Location> locations)
+        public List<Location> GetAllList()
         {
-            return ILocationRepository.GetAllList(locations);
+            return ILocationRepository.GetAllList();
         }
 
       

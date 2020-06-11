@@ -14,7 +14,9 @@ using System.Threading.Tasks;
 
 namespace CoronaApp.Api.Middleware
 {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public class ValedationMiddleware: ExceptionFilterAttribute
+
     {
         //private readonly RequestDelegate‏ requestDelegate;
         //public ValedationMiddleware(RequestDelegate‏ requestDelegate)
@@ -52,10 +54,6 @@ namespace CoronaApp.Api.Middleware
             context.Response.StatusCode = (int)code;
             return context.Response.WriteAsync(result);
         }
-
-
-
-
-
     }
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

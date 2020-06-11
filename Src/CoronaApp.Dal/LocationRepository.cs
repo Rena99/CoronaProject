@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,28 +11,31 @@ namespace CoronaApp.Dal
 {
     public class LocationRepository : ILocationRepository
     {
-        //private readonly string con;
-        //public LocationRepository(string _con)
-        //{
-        //    _con = con;
-        //}
         public LocationRepository()
         {
-
         }
         private readonly CoronaContext context;
         public LocationRepository(CoronaContext context)
         {
             this.context = context;
         }
-        ICollection<Location> ILocationRepository.GetAllList(List<Location> listPatient)
+        public List<Location> GetAllList()
         {
-            foreach (var item in context.Patient.Include(x => x.Path))
+            var listPatient = new List<Location>();
+            try
             {
-                foreach (var item2 in item.Path)
+
+                foreach (var item in context.Patient.Include(x => x.Path))
                 {
-                    listPatient.Add(item2);
+                    foreach (var item2 in item.Path)
+                    {
+                        listPatient.Add(item2);
+                    }
                 }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message); throw;
             }
             return listPatient;
         }
@@ -58,7 +60,6 @@ namespace CoronaApp.Dal
         }
         public async Task<List<Location>> SearchByCity(LocationSearch locationSearch)
         {
-           // CoronaContext context = new CoronaContext();
             var listOfSpecificCity = await context.Location.Where(l => l.City == locationSearch.City).ToListAsync();
             return listOfSpecificCity;
         }

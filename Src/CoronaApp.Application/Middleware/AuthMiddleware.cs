@@ -8,7 +8,9 @@ using System.Threading.Tasks;
 
 namespace CoronaApp.Api.Middleware
 {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public class AuthMiddleware
+
     {
         private readonly RequestDelegate _next;
 
@@ -40,3 +42,4 @@ namespace CoronaApp.Api.Middleware
         //}
     }
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
