@@ -1794,10 +1794,7 @@
         },
         "runtime": {
           "bin/placeholder/CoronaApp.Services.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
+        }
       }
     }
   },
@@ -6367,19 +6364,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\RLemberger\\.nuget\\packages\\": {}
+    "C:\\Users\\rina lerner\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\RLemberger\\Documents\\Brix\\Rina&Rachelly\\CoronaProject\\Src\\CoronaApp.Dal\\CoronaApp.Dal.csproj",
+      "projectUniqueName": "C:\\Users\\rina lerner\\Documents\\Brix\\CoronaProject\\Src\\CoronaApp.Dal\\CoronaApp.Dal.csproj",
       "projectName": "CoronaApp.Dal",
-      "projectPath": "C:\\Users\\RLemberger\\Documents\\Brix\\Rina&Rachelly\\CoronaProject\\Src\\CoronaApp.Dal\\CoronaApp.Dal.csproj",
-      "packagesPath": "C:\\Users\\RLemberger\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\RLemberger\\Documents\\Brix\\Rina&Rachelly\\CoronaProject\\Src\\CoronaApp.Dal\\obj\\",
+      "projectPath": "C:\\Users\\rina lerner\\Documents\\Brix\\CoronaProject\\Src\\CoronaApp.Dal\\CoronaApp.Dal.csproj",
+      "packagesPath": "C:\\Users\\rina lerner\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\rina lerner\\Documents\\Brix\\CoronaProject\\Src\\CoronaApp.Dal\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\RLemberger\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\rina lerner\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6392,8 +6389,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\RLemberger\\Documents\\Brix\\Rina&Rachelly\\CoronaProject\\Src\\CoranaApp.Services\\CoronaApp.Services.csproj": {
-              "projectPath": "C:\\Users\\RLemberger\\Documents\\Brix\\Rina&Rachelly\\CoronaProject\\Src\\CoranaApp.Services\\CoronaApp.Services.csproj"
+            "C:\\Users\\rina lerner\\Documents\\Brix\\CoronaProject\\Src\\CoranaApp.Services\\CoronaApp.Services.csproj": {
+              "projectPath": "C:\\Users\\rina lerner\\Documents\\Brix\\CoronaProject\\Src\\CoranaApp.Services\\CoronaApp.Services.csproj"
             }
           }
         }

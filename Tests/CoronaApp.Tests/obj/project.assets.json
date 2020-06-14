@@ -11108,19 +11108,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\RLemberger\\.nuget\\packages\\": {}
+    "C:\\Users\\rina lerner\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\RLemberger\\Documents\\Brix\\Rina&Rachelly\\CoronaProject\\Tests\\CoronaApp.Tests\\CoronaApp.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\rina lerner\\Documents\\Brix\\CoronaProject\\Tests\\CoronaApp.Tests\\CoronaApp.Tests.csproj",
       "projectName": "CoronaApp.Tests",
-      "projectPath": "C:\\Users\\RLemberger\\Documents\\Brix\\Rina&Rachelly\\CoronaProject\\Tests\\CoronaApp.Tests\\CoronaApp.Tests.csproj",
-      "packagesPath": "C:\\Users\\RLemberger\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\RLemberger\\Documents\\Brix\\Rina&Rachelly\\CoronaProject\\Tests\\CoronaApp.Tests\\obj\\",
+      "projectPath": "C:\\Users\\rina lerner\\Documents\\Brix\\CoronaProject\\Tests\\CoronaApp.Tests\\CoronaApp.Tests.csproj",
+      "packagesPath": "C:\\Users\\rina lerner\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\rina lerner\\Documents\\Brix\\CoronaProject\\Tests\\CoronaApp.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\RLemberger\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\rina lerner\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -11133,8 +11133,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\RLemberger\\Documents\\Brix\\Rina&Rachelly\\CoronaProject\\Src\\CoronaApp.Application\\CoronaApp.Api.csproj": {
-              "projectPath": "C:\\Users\\RLemberger\\Documents\\Brix\\Rina&Rachelly\\CoronaProject\\Src\\CoronaApp.Application\\CoronaApp.Api.csproj"
+            "C:\\Users\\rina lerner\\Documents\\Brix\\CoronaProject\\Src\\CoronaApp.Application\\CoronaApp.Api.csproj": {
+              "projectPath": "C:\\Users\\rina lerner\\Documents\\Brix\\CoronaProject\\Src\\CoronaApp.Application\\CoronaApp.Api.csproj"
             }
           }
         }

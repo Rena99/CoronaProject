@@ -102,12 +102,12 @@ let setCookie=function setNewCookie(token) {
     document.cookie = "token=" + token +";";
 }
 
-let addPatient = function addAPatient(patientID, patientPassword, patientName) {
+let setPatient = function setCurrentPatient(patientID, patientPassword, patientName) {
     patient.password = 0;
     patient.id = 0;
     patient.name = '';
     patient.age = 0;
-    
+
     if (patientID !== "") {
         patient.id = parseInt(patientID);
     }
@@ -117,7 +117,10 @@ let addPatient = function addAPatient(patientID, patientPassword, patientName) {
     if (patientName !== "") {
         patient.name = patientName;
     }
+}
 
+let addPatient = function addAPatient(patientID, patientPassword, patientName) {
+    setPatient(patientID, patientPassword, patientName);
     let url = urlPath + "/" + patient.id + "/" + patient.password + "/" + patient.name;
     let promise = new Promise(function (resolve, reject) {
         oReq.onreadystatechange = function () {
@@ -315,7 +318,7 @@ newPath.addEventListener('click', function () {
     deleteInput();
 });
 
-switchPatient.addEventListener('click', function () {
+let switchPatientHtml = function htmlChanges() {
     switchPatient.style.display = 'none';
     patientID.value = '';
     patientID.style.display = 'inline';
@@ -332,5 +335,9 @@ switchPatient.addEventListener('click', function () {
     switchPatient.setAttribute("className", 1);
     removeDataTable();
     deleteInput();
+}
+
+switchPatient.addEventListener('click', function () {
+    switchPatientHtml();
 });
 
