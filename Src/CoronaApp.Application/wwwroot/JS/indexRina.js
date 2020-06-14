@@ -247,9 +247,9 @@ let DeletePaths = function savePathsOfPatient(id) {
         result => console.log("Worked"),
         reject => alert("Bad Response")
     );
-    oReq.open("DELETE", urlPath + "/" + token, true);
+    oReq.open("DELETE", urlPath + "/" + cookie.substring(6), true);
     oReq.setRequestHeader("Content-Type", "application/json");
-    oReq.setRequestHeader("Authorization", "Bearer " + cookie);
+    oReq.setRequestHeader("Authorization", "Bearer " + cookie.substring(6));
 
     let jsonString = JSON.stringify(id);
     console.log(jsonString);
@@ -271,12 +271,10 @@ let addPathObject = function addANewObjectToPatientPathArray(path) {
         result => addPath(result),
         reject => alert("Bad Response")
     );
-
-    let b = url + '?access_token=' + encodeURIComponent(token);
-    oReq.open("PUT", urlPath +"/"+ token, true);
+  
+    oReq.open("PUT", urlPath + "/" + cookie.substring(6), true);
     oReq.setRequestHeader("Content-Type", "application/json");
-    var lengthOfToken = cookie["token="].length;
-    oReq.setRequestHeader("Authorization", "Bearer " + cookie["token="].substring(lengthOfToken-2));
+    oReq.setRequestHeader("Authorization", "Bearer " + cookie.substring(6));
     
   
     let jsonString = JSON.stringify(path);
