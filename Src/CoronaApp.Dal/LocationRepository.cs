@@ -66,7 +66,7 @@ namespace CoronaApp.Dal
             {
                 foreach (var item2 in item.Path)
                 {
-                    if (item2.StartDate > locationSearch.StartDate)
+                    if (item2.StartDate > locationSearch.StartDate&&item2.EndDate<locationSearch.EndDate)
                     {
                         listPatient.Add(item2);
                     }

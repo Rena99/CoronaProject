@@ -762,7 +762,6 @@ C:\Users\rina lerner\Documents\Brix\AuthProject\CoronaProject\Src\CoranaApp.Serv
 C:\Users\rina lerner\Documents\Brix\AuthProject\CoronaProject\Src\CoranaApp.Services\obj\Debug\netcoreapp3.1\CoronaApp.Services.pdb
 C:\Users\rina lerner\Documents\Brix\AuthProject\CoronaProject\Src\CoranaApp.Services\obj\Debug\netcoreapp3.1\CoronaApp.Services.genruntimeconfig.cache
 C:\Users\rina lerner\Documents\Brix\AuthProject\CoronaProject\Src\CoranaApp.Services\obj\Debug\netcoreapp3.1\CoronaApp.Services.csproj.CoreCompileInputs.cache
-C:\Users\RLemberger\Documents\Brix\Rina&Rachelly\CoronaProject\Src\CoranaApp.Services\obj\Debug\netcoreapp3.1\CoronaApp.Services.csprojAssemblyReference.cache
 C:\Users\rina lerner\Documents\Brix\CoronaProject\Src\CoranaApp.Services\bin\Debug\netcoreapp3.1\CoronaApp.Services.deps.json
 C:\Users\rina lerner\Documents\Brix\CoronaProject\Src\CoranaApp.Services\bin\Debug\netcoreapp3.1\CoronaApp.Services.runtimeconfig.json
 C:\Users\rina lerner\Documents\Brix\CoronaProject\Src\CoranaApp.Services\bin\Debug\netcoreapp3.1\CoronaApp.Services.runtimeconfig.dev.json

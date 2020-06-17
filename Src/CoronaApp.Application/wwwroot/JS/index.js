@@ -1,15 +1,25 @@
-﻿
-const helloTitle = document.createElement('header');
+﻿const helloTitle = document.createElement('header');
 helloTitle.innerText = 'Epidemiology Report';
 document.body.appendChild(helloTitle);
 
 let locationsList = [];
-
 let searchLocationsList = [];
-
 let listNamesForColumns = ["Id", "city", "location", "startDate", "endDate"];
-
 var obj, dbParam, xmlhttp, myObj, x, txt = "", currentList;
+const buttonSearch = document.getElementById('Search-City');
+const sortDate = document.getElementById("sortDate");
+const inputSearch = document.getElementById('nameOfCity');
+const buttonSearchDate = document.getElementById("SearchDate");
+const BASICURL = "https://localhost:44381/api/";
+const refresh = document.getElementById('refresh');
+let inputStartDate = document.getElementById("StartDate");
+let inputEndDate = document.getElementById("EndDate");
+let valueOfInput = document.getElementById('nameOfCity');
+var searchLocation = {
+    City: String,
+    StartDate: Date,
+    EndDate: Date
+}
 obj = { table: "demo", limit: 20 };
 dbParam = JSON.stringify(obj);
 
@@ -26,77 +36,76 @@ function load() {
     };
     xhttp.open("GET", "api/Location/GetAllList", true);
     xhttp.send();
-
 }
 
-function styleTable(table) {
-    table.style.textAlign = "center";
-    table.setAttribute("id", "table");
-    table.style.width = '50%';
-    table.setAttribute('border', '1');
-    table.style.borderColor = "red";
-    table.setAttribute('cellspacing', '0');
-    table.setAttribute('cellpadding', '5');
+//function styleTable(table) {
+//    table.style.textAlign = "center";
+//    table.setAttribute("id", "table");
+//    table.style.width = '50%';
+//    table.setAttribute('border', '1');
+//    table.style.borderColor = "red";
+//    table.setAttribute('cellspacing', '0');
+//    table.setAttribute('cellpadding', '5');
+//}
+function fillCol(arryEX, bRow, k) {
+    var index = 0;
+    for (var item2 of arryEX) {
+        if (index !== k) {
+            if (index === 0) {
+                item2 = arryEX[5];
+            }
+            index++;
+            var td = document.createElement("td");
+            td.style.width = "50px";
+            if (index === 5 || index == 4) {
+                item2 = item2.substring(0, 10);
+            }
+            td.innerHTML = item2;
+            bRow.appendChild(td);
+        }
+    }
 }
-//Build the table according to the variables entered
+
+function CreateRows(tBody) {
+    for (var c = 0; c < myObj.length; c++) {
+        currentRowValues = myObj[c];
+        var k = Object.keys(currentRowValues).length - 1;
+        var arryEX = Object.values(currentRowValues);
+        let bRow = document.createElement("tr");
+        fillCol(arryEX, bRow,k);
+        tBody.appendChild(bRow);
+    }
+}
+
 function createTable(locationsList) {
     if (locationsList.length > 0) {
         var b = document.getElementsByTagName("body")[0];
         var table = document.getElementById("table");
-        var col = [];
-        var index = 0;
         var tBody = document.createElement("tbody");
-        tBody.setAttribute("id", "tBodyId")
-        for (var c = 0; c < myObj.length; c++) {
-
-            currentRowValues = myObj[c];
-            var k = Object.keys(currentRowValues).length-1;
-            var arryEX = Object.values(currentRowValues);
-            let bRow = document.createElement("tr");
-            for (var item2 of arryEX) {
-                if (index!==k) {
-                if (index === 0) {
-                    item2 = arryEX[5];
-                }
-                index++;
-                var td = document.createElement("td");
-                td.style.width = "50px";
-                if (index === 5 || index == 4) {
-                    item2 = item2.substring(0, 10);
-                }
-                td.innerHTML = item2;
-                    bRow.appendChild(td);
-                }
-            }
-            index = 0;
-            tBody.appendChild(bRow);
-        }
+        tBody.setAttribute("id", "tBodyId");
+        CreateRows(tBody)
+        table.appendChild(tBody);
+        b.appendChild(table);
     }
-    table.appendChild(tBody);
-    b.appendChild(table);
 }
-var searchLocation = {
-    City: String,
-    StartDate: Date,
-    EndDate: Date
 
-}
-const buttonSearch = document.getElementById('Search-City');
-const sortDate = document.getElementById("sortDate");
-const inputSearch = document.getElementById('nameOfCity');
-const buttonSearchDate = document.getElementById("SearchDate");
-const BASICURL = "https://localhost:44381/api/";
-const refresh = document.getElementById('refresh');
-
-buttonSearchDate.addEventListener("click", function () {
+function delTable() {
     let lenghtTable = document.getElementById("table").rows.length;
     for (var i = 0, x = 2; i < lenghtTable - 2; i++) {
         document.getElementById("table").deleteRow(x);
     }
-    let inputStartDate = document.getElementById("StartDate").value;
-    let inputEndDate = document.getElementById("EndDate").value;
-    searchLocation.StartDate = inputStartDate;
-    searchLocation.EndDate = inputEndDate;
+}
+function cutDate() {
+    if (inputStartDate.value != "" && inputEndDate.value != "") {
+        inputStartDate.value = inputStartDate.value.substring(0, 10);
+        inputEndDate.value = inputEndDate.value.substring(0, 10);
+        return `?locationSearch.StartDate=${inputStartDate.value}&locationSearch.EndDate=${ inputEndDate.value}`;
+    }
+}
+buttonSearchDate.addEventListener("click", function () {
+    delTable();
+    searchLocation.StartDate = inputStartDate.value;
+    searchLocation.EndDate = inputEndDate.value;
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -107,19 +116,10 @@ buttonSearchDate.addEventListener("click", function () {
             createTable(searchLocationsList);
         }
     }
-    let values;
-    if (inputStartDate != "" && inputEndDate != "") {
-        inputStartDate = inputStartDate.substring(0, 10);
-        inputEndDate = inputEndDate.substring(0, 10);
-        values = "?locationSearch.StartDate=" + inputStartDate + "&locationSearch.EndDate=" + inputEndDate;
-    }
-    xhttp.open("GET", "api/Location/Get" + values, true);
+    let valuesURL = cutDate();
+    xhttp.open("GET", "api/Location/Get" + valuesURL, true);
     xhttp.send();
 });
-
-
-
-
 
 refresh.addEventListener('click', function () {
     let lenghtTable = document.getElementById("table").rows.length;
@@ -128,13 +128,10 @@ refresh.addEventListener('click', function () {
     }
     myObj = JSON.parse(locationsList);
     createTable(myObj);
-}
-);
-//When a user types a city for searching, the list is only shown to that city
-inputSearch.addEventListener('mouseleave', function () {
+});
     buttonSearch.addEventListener('click', function () {
-        let valueOfInput = document.getElementById('nameOfCity').value;
-        searchLocation.City = valueOfInput
+        searchLocation.City = valueOfInput.value;
+        document.getElementById('nameOfCity').value = "";
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
@@ -148,15 +145,12 @@ inputSearch.addEventListener('mouseleave', function () {
                 createTable(searchLocationsList);
             }
         }
-
-        if (valueOfInput != "") {
-            valueOfInput = "?locationSearch.City=" + valueOfInput;
+        if (searchLocation.City != "") {
+            searchLocation.City = "?locationSearch.City=" + searchLocation.City;
         }
-        xhttp.open("GET", "api/Location/Get" + valueOfInput, true);
+        xhttp.open("GET", "api/Location/Get" + searchLocation.City, true);
         xhttp.send();
-    });
 });
-
 
 sortDate.addEventListener("click", function () {
     var tbody = document.getElementById("tBodyId");
@@ -165,7 +159,6 @@ sortDate.addEventListener("click", function () {
     rows.forEach(function (v) {
         tbody.appendChild(v); // note that .appendChild() *moves* elements
     });
-
 })
 
 

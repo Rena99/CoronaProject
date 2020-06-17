@@ -33,6 +33,7 @@ namespace CoronaApp.Api.Controllers
 
         // GET: api/<LocationController>
         [HttpGet]
+        [Route("{action}")]
         public IActionResult GetAllList()
         {
             var listPatient = locationService.GetAllList();
