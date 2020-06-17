@@ -4,27 +4,26 @@ import { server } from "../Server/Server";
 
 const urlPath = "https://localhost:44381/patient";
 const xhttp = new server();
+ 
+    //constructor(dataTable, newPath, table, startDateOfPath, endDateOfPath, cityOfPath, locationOfPath, deleted) {
+    //    this.dataTable = dataTable
+    //    this.newPath = newPath;
+    //    this.table = table;
+    //    this.startDateOfPath = startDateOfPath;
+    //    this.endDateOfPath = endDateOfPath;
+    //    this.cityOfPath = cityOfPath;
+    //    this.locationOfPath = locationOfPath;
+    //    this.deleted = deleted;
+    //}     
+const dataTable = document.getElementById('dataTable');
+const newPath = document.getElementById('addNewRow');
+const table = document.getElementById('table');
+const startDateOfPath = document.getElementById('startDate');
+const endDateOfPath = document.getElementById('endDate');
+const cityOfPath = document.getElementById('city');
+const locationOfPath = document.getElementById('location');
+const deleted = document.getElementsByClassName('deleted');
 
-export class buildTable {
-    dataTable; 
-    newPath; 
-    table; 
-    startDateOfPath;
-    endDateOfPath;
-    cityOfPath;
-    locationOfPath; 
-    deleted;
-
-    constructor(dataTable, newPath, table, startDateOfPath, endDateOfPath, cityOfPath, locationOfPath, deleted) {
-        this.dataTable = dataTable
-        this.newPath = newPath;
-        this.table = table;
-        this.startDateOfPath = startDateOfPath;
-        this.endDateOfPath = endDateOfPath;
-        this.cityOfPath = cityOfPath;
-        this.locationOfPath = locationOfPath;
-        this.deleted = deleted;
-    }     
     deleteInput = function deleteInputItems() {
         startDateOfPath.value = '';
         endDateOfPath.value = '';
@@ -151,4 +150,5 @@ export class buildTable {
             removePath(deleted.id);
         });
     };
-}
+
+export { removeDataTableFromDisplay, addANewObjectToPatientPathArray };

@@ -1017,3 +1017,4 @@ C:\Users\rina lerner\Documents\Brix\CoronaProject\Src\CoranaApp.Services\obj\Deb
 C:\Users\rina lerner\Documents\Brix\CoronaProject\Src\CoranaApp.Services\obj\Debug\netcoreapp3.1\CoronaApp.Services.dll
 C:\Users\rina lerner\Documents\Brix\CoronaProject\Src\CoranaApp.Services\obj\Debug\netcoreapp3.1\CoronaApp.Services.pdb
 C:\Users\rina lerner\Documents\Brix\CoronaProject\Src\CoranaApp.Services\obj\Debug\netcoreapp3.1\CoronaApp.Services.genruntimeconfig.cache
+C:\Users\RLemberger\Documents\Brix\Rina&Rachelly\CoronaProject\Src\CoranaApp.Services\obj\Debug\netcoreapp3.1\CoronaApp.Services.csprojAssemblyReference.cache

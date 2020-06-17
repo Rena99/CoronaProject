@@ -7,7 +7,9 @@ let patientsPath = {
     locationC: ''
 };
 import { buildTable } from "../Locations/BuildTable";
+
 import { server } from "../Server/Server";
+   
 
 let patient = {
     id: '',
@@ -33,7 +35,7 @@ const patientID = document.getElementById('patientID');
 //const patientAge = document.getElementById('patientAge');
 const patientsName = document.getElementById('patientName');
 const buildTableClass = new buildTable(dataTable, newPath, table, startDateOfPath, endDateOfPath, cityOfPath, locationOfPath, deleted);
-const xhttp = new server();
+const xhttps = new server();
 const urlPath = "https://localhost:44381/patient";
 let cookie = document.cookie;
 
@@ -57,7 +59,7 @@ let changeHTML = function changeHTMLAttributes(patient) {
 let AddNewPatient = function AddNewPatientToDB(patient) {
     let url = urlPath;
     try {
-        const data = await xhttp.postCall(url, patient);
+        const data =  xhttps.postCall(url, patient);
         addPatient(patient.id, patient.password, patient.name);
     }
     catch (e) {
@@ -90,7 +92,7 @@ let addPatient = function addAPatient(patientID, patientPassword, patientName) {
     setPatient(patientID, patientPassword, patientName);
     let url = urlPath + "/" + patient.id + "/" + patient.password + "/" + patient.name;
     try {
-        const data = await xhttp.deleteCall(url);
+        const data =  xhttps.deleteCall(url);
         let hide = false;
         if (data.id === 0) {
             hide = true;
